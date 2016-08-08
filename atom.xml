@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kiwi-yan.github.io/"/>
-  <updated>2016-07-31T11:37:43.821Z</updated>
+  <updated>2016-08-08T13:33:56.213Z</updated>
   <id>http://kiwi-yan.github.io/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一个小小的Bug引发的思考</title>
+    <link href="http://kiwi-yan.github.io/2016/08/08/%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%B0%8F%E7%9A%84Bug%E5%BC%95%E5%8F%91%E7%9A%84%E6%80%9D%E8%80%83/"/>
+    <id>http://kiwi-yan.github.io/2016/08/08/一个小小的Bug引发的思考/</id>
+    <published>2016-08-08T11:20:28.000Z</published>
+    <updated>2016-08-08T13:33:56.213Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>前段时间在搞一个网页页面，由于一些不可描述的原因，这部分无法完全套用现有框架，大部分代码只能用原生的php来开发。开发过程中遇到了一个比较蛋疼的问题。所幸终于解决，现在为了描述清楚，将问题简化抽象，将解决思路整理下来，让以后长点记性。</p>
+<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>问题是这样的：</p>
+<p>页面有一个form表单。主要用来执行一些查询功能。查询的结果是一个集合，要通过表格显示出来。当这个集合很大的时候，就要分页显示。</p>
+<p>代码大致如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"xxx"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"type"</span> <span class="attr">placeholder</span>=<span class="string">"请输入要查找的类型"</span>/&gt;</span></div><div class="line">    ...</div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"查找"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx?page=1"</span>&gt;</span>1 <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx?page=2"</span>&gt;</span>2 <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span>...<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span>...<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>问题来了。表单点提交之后显示的查询结果是正确的，但是：当点了页码之后，显示出来的结果类型不正确了，和查找时输入的类型无关了。同时表单中的值也全部重置了。</p>
+<p>（可能有经验的同学已经知道是什么原因了，但是作为一个没有经验的新手，我还是一脸懵逼的状态）</p>
+<h3 id="问题定位"><a href="#问题定位" class="headerlink" title="问题定位"></a>问题定位</h3><p>这个问题怎么解决？</p>
+<p>先规定好bug场景吧: 点击“查找”内容正确，但是点击页码3的时候，表格内容不正确了。</p>
+<p>1. 服务端代码定位：</p>
+<p>先打印一下服务端的获取的参数吧，结果是page=3，但是表单里的值全都不见了！这样的话就相当于服务端查询的时候，type的值为空，因为后台逻辑里面写的如果值为空的话，sql语句就不会添加这个查询条件。所以服务器返回给前端的数据就没有按type查找了。表单里的其他值也是一样的道理。</p>
+<p>那么这样一来，服务端的代码逻辑错误就暂时排除了。那么问题在哪呢？为什么表单里的值获取不到呢？而第一次是正确的又是为什么呢？</p>
+<p>2. 网页代码的定位</p>
+<p>这个时候就需要思考的问题是表单中的值到底有没有被传到服务端去。因为表单里的值是post方式提交的，所以我打开了浏览器的F12工具，然后去查Network。</p>
+<p>然后问题就出现了：第一次填写了表单之后，数据被POST到服务端，这是没有问题的；而第二次点击页码的时候，方法变成了GET，从而表单中的数据就无法提交上去了。</p>
+<p>问题找到了，就是当点击页码的时候，form表单中的数据没有被提交到服务端去，造成这样的原因是什么呢？因为所点击的页码是一个a标签，它的链接在href中，当点击这个页码的时候，客户端就会以GET的方式往服务端发送请求。</p>
+<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>到这里问题已经基本明确了，那么怎么解决这个问题呢？</p>
+<p>再次描述一下背景。因为表单中填写的数据比较敏感，所以必须使用POST方式完成提交。</p>
+<p>因为自己也不是搞web开发的，因此对于此类问题，如果原因搞明，那解决方案基本靠搜索引擎了（公司的网络可以访问Google，真心不错）。在网上搜了搜，可能是自己不会搜吧，大多数都是讲如何使用MySQL+php完成分页的，改了改关键字，终于找到一些可以沾边的网页。</p>
+<p>仔细看了看，主要解决办法有：</p>
+<p>1. ajax异步提交，发送POST请求</p>
+<p>2. 表单中添加一个隐藏的页码控件，然后在a里面添加js函数来完成提交。</p>
+<p>接下来一个一个试：</p>
+<p>然后就遇到问题了，我并不熟悉ajax，原理也没有搞懂，试了好多下，有“成功”的，确实从服务端接收到数据了，但是覆盖在了原来的网页上面，而且数据依然有问题（可能是表单数据发送到后台的方式不正确）。</p>
+<p>另外一个，在表单中添加隐藏的页码控件，有兴趣可以看看<a href="http://blog.csdn.net/arzhuo/article/details/6969516" target="_blank" rel="external">这个链接</a>，然而此时已经花了好长时间解决这个问题了，搞到这个时候其实已经很烦了，而且这个解决办法要改动的东西太多，并不是很满意。</p>
+<p><strong>下班！</strong></p>
+<p>次日早上这个问题才终于解决。</p>
+<p>其实仔细想一下，这个问题可以这样解决（假如没有上网搜解决方案这个过程）：</p>
+<p>1. 既然点击a使用的方法是GET，而点击“查找”按钮使用的方法是POST，那么可不可以让点击a标签实际上就是提交表单的动作呢？再把a里面的href带上。</p>
+<p>那么可以使用jQuery这样子写：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">"li a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        url = $(<span class="keyword">this</span>).attr(<span class="string">"href"</span>);     <span class="comment">// 获取这个a标签的href中的url</span></div><div class="line">        event.preventDefault();         <span class="comment">// 取消点击事件的默认动作</span></div><div class="line">        $(<span class="string">"form"</span>).attr(<span class="string">"action"</span>, url);  <span class="comment">// 修改form中的action动作</span></div><div class="line">        $(<span class="string">"form"</span>).submit();             <span class="comment">// 提交表单</span></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>就使用这么几行代码，直接改掉a标签的默认动作，然后问题也解决了。这个解决方案其实也是受到搜索出来的结果启发得到的，但是由于问题的具体场景不同，所以解决方案的复杂度也不一样。</p>
+<p>2. 另一种方案：从服务端着手</p>
+<p>既然第一次提交的数据第二次就“丢失”了，那么我可以在服务端将提交的数据保存到session中，以供后续查询使用。</p>
+<p>这个实现起来逻辑将会比较混乱，所以跳转页面这部分算是实现了，但是又带来一些额外的问题。所以没有了继续搞下去的动力。</p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>解决这个小小的bug的过程真的是相当煎熬，明明可以解决，但有好几次就是跳过了正确的解决方案。在这个过程中暴露了一个问题：解决问题不带脑子。</p>
+<p>因此总结一下解决问题的方法：</p>
+<p>首先要正确定位bug，然后思考bug的原因，寻找解决方案。</p>
+<p>首先定位bug：</p>
+<p>1. 对于不可重现的bug，一定要在编码期间充分准备，随时用日志记录下状态。</p>
+<p>2. 对于可重现的bug（比如这个例子），需要采取自上而下或自下而上的方法，或者“夹逼法”。从问题的一端起，逐步去验证，直到明白是从哪个地方起出了问题，或者在哪个阶段出了问题，然后再更进一步去找。</p>
+<p>找到问题之后，就思考原因。有一点很重要，不写、不抄、不用看不懂的代码（这个和代码复用绝对不是一回事）。每一步都想清楚，哪一步与预期不一样那一步就出了问题。</p>
+<p>寻找解决方案这个就说来就话长，可以修改代码使其与预期一致（推荐），比如这里js模拟提交的解决方案。还可以后期做修补，先把这部分所带来的影响绕过去，比如这里的session这个解决方案。等等，具体情况具体对待，但是道理和套路一定要清楚。</p>
+<p>以上です。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;引子&quot;&gt;&lt;a href=&quot;#引子&quot; class=&quot;headerlink&quot; title=&quot;引子&quot;&gt;&lt;/a&gt;引子&lt;/h3&gt;&lt;p&gt;前段时间在搞一个网页页面，由于一些不可描述的原因，这部分无法完全套用现有框架，大部分代码只能用原生的php来开发。开发过程中遇到了一个比较蛋
+    
+    </summary>
+    
+    
+      <category term="web前端" scheme="http://kiwi-yan.github.io/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+      <category term="web开发" scheme="http://kiwi-yan.github.io/tags/web%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
