@@ -84,18 +84,18 @@
 
 
 
-<meta name="description" content="引子最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。
+<meta name="description" content="引言最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。
 在这里我还会顺带介绍一下如何处理.csv文件，因为某些情况下这是必须的（">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用Python处理Excel文件">
 <meta property="og:url" content="http://kiwi-yan.github.io/2016/08/14/python-excel/index.html">
 <meta property="og:site_name" content="死锁的人生">
-<meta property="og:description" content="引子最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。
+<meta property="og:description" content="引言最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。
 在这里我还会顺带介绍一下如何处理.csv文件，因为某些情况下这是必须的（">
-<meta property="og:updated_time" content="2016-08-14T06:45:20.523Z">
+<meta property="og:updated_time" content="2016-08-14T16:34:59.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Python处理Excel文件">
-<meta name="twitter:description" content="引子最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。
+<meta name="twitter:description" content="引言最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。
 在这里我还会顺带介绍一下如何处理.csv文件，因为某些情况下这是必须的（">
 
 
@@ -279,7 +279,7 @@
       
 
       
-        <h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。</p>
 <p>在这里我还会顺带介绍一下如何处理.csv文件，因为某些情况下这是必须的（后面会提到）。</p>
 <h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><p>下面的环境配置是针对Windows操作系统的，其他操作系统差别不是很大，可以参考一下。</p>
 <p>我使用的Python版本号是2.7.12，如果你的Python是2.x，请确保在2.6以上。在Python 3.x上可能会有些不太一样，所以要注意，可以参考其他的文档和博客。</p>
@@ -503,7 +503,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引子"><span class="nav-number">1.</span> <span class="nav-text">引子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用xlrd读Excel"><span class="nav-number">3.</span> <span class="nav-text">使用xlrd读Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用xlwt写Excel"><span class="nav-number">4.</span> <span class="nav-text">使用xlwt写Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用xlutils修改Excel"><span class="nav-number">5.</span> <span class="nav-text">使用xlutils修改Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用csv读写csv文件"><span class="nav-number">6.</span> <span class="nav-text">使用csv读写csv文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More…"><span class="nav-number">7.</span> <span class="nav-text">More…</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#环境配置"><span class="nav-number">2.</span> <span class="nav-text">环境配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用xlrd读Excel"><span class="nav-number">3.</span> <span class="nav-text">使用xlrd读Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用xlwt写Excel"><span class="nav-number">4.</span> <span class="nav-text">使用xlwt写Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用xlutils修改Excel"><span class="nav-number">5.</span> <span class="nav-text">使用xlutils修改Excel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用csv读写csv文件"><span class="nav-number">6.</span> <span class="nav-text">使用csv读写csv文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More…"><span class="nav-number">7.</span> <span class="nav-text">More…</span></a></li></ol></div>
             
           </div>
         </section>
