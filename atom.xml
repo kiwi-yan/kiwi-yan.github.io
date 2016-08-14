@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kiwi-yan.github.io/"/>
-  <updated>2016-08-14T06:37:52.440Z</updated>
+  <updated>2016-08-14T06:45:20.523Z</updated>
   <id>http://kiwi-yan.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kiwi-yan.github.io/2016/08/14/python-excel/"/>
     <id>http://kiwi-yan.github.io/2016/08/14/python-excel/</id>
     <published>2016-08-14T13:35:15.000Z</published>
-    <updated>2016-08-14T06:37:52.440Z</updated>
+    <updated>2016-08-14T06:45:20.523Z</updated>
     
     <content type="html"><![CDATA[<h3 id="引子"><a href="#引子" class="headerlink" title="引子"></a>引子</h3><p>最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。</p>
 <p>在这里我还会顺带介绍一下如何处理.csv文件，因为某些情况下这是必须的（后面会提到）。</p>
@@ -98,7 +98,7 @@
 <li><code>DictWriter.writerow()</code>写一行。</li>
 <li><code>DictWriter.writerows()</code>写多行。</li>
 </ul>
-<p>需要注意的问题是：当我们需要写csv的时候，打开文件一定要带上’b’，否则可能会往文件里输出空行。python 3.x情况会有些不同。</p>
+<p>需要注意的问题是：当我们需要写csv的时候，打开文件一定要带上’b’，否则可能会往文件里输出空行。Python 3.x情况会有些不同。</p>
 <h3 id="More…"><a href="#More…" class="headerlink" title="More…"></a>More…</h3><p>[1] <a href="https://github.com/python-excel/xlrd/" target="_blank" rel="external">https://github.com/python-excel/xlrd/</a><br>[2] <a href="https://github.com/python-excel/xlwt/" target="_blank" rel="external">https://github.com/python-excel/xlwt/</a><br>[3] <a href="https://github.com/python-excel/tutorial/" target="_blank" rel="external">https://github.com/python-excel/tutorial/</a></p>
 ]]></content>
     
