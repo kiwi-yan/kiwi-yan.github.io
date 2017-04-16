@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="web开发，网络编程," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
+不说废话，进入正题。
+如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《HTTP权威指南》学习总结1——HTTP协议概述">
+<meta property="og:url" content="http://kiwi-yan.github.io/2017/04/15/http-intro/index.html">
+<meta property="og:site_name" content="死锁的人生">
+<meta property="og:description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
+不说废话，进入正题。
+如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/new_moon_with_face.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png">
+<meta property="og:updated_time" content="2017-04-16T08:47:53.676Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《HTTP权威指南》学习总结1——HTTP协议概述">
+<meta name="twitter:description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
+不说废话，进入正题。
+如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"hide"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://kiwi-yan.github.io/2017/04/15/http-intro/"/>
+
+  <title> 《HTTP权威指南》学习总结1——HTTP协议概述 | 死锁的人生 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">死锁的人生</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Life is short and everything is void.</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《HTTP权威指南》学习总结1——HTTP协议概述
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Posted on</span>
+            <time itemprop="dateCreated" datetime="2017-04-15T21:01:48+08:00" content="2017-04-15">
+              2017-04-15
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png"></span>。</p>
+<p>不说废话，进入正题。</p>
+<p>如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web系统的最基本协议，但是很多开发者都很少系统了解过，殊不知了解HTTP协议可以解决很多开发过程中的疑难杂症。因为自己在两年前学习网络编程的时候想着做个什么东西出来，当时就选了一个HTTP服务器，从此与HTTP结下了不解之缘，工作以后到目前为止主要工作内容就是Web开发，于是又勾起了那段青涩的回忆，也开始想深入了解一下她，于是乎……（对不起我编不下去了），总之，我写下了这几篇博客来作为自己对最近一段时间学习的总结。</p>
+<a id="more"></a>
+<h3 id="什么是HTTP协议？"><a href="#什么是HTTP协议？" class="headerlink" title="什么是HTTP协议？"></a>什么是HTTP协议？</h3><p>HTTP的全称是<b>H</b>yper<b>t</b>ext <b>T</b>ransfer <b>P</b>rotocal（超文本传输协议），最初是一帮搞核物理实验的人发明出来用来做文件共享的，没想到竟然成为了因特网的发展史上的一次“革命”，让我们感谢一下T. Berners-Lee（没有他的话我也不知道我是搞什么的）。最新的HTTP/2草案已经由IETF在2015年5月发布，但目前HTTP被使用的版本仍以HTTP/1.1为主，所以我也以介绍HTTP/1.1为主（关键是HTTP/2还没有开始了解，后面可能会写一篇介绍HTTP/2的文章）。</p>
+<blockquote>
+<p>本段信息翻译自rfc1945<br>HTTP（Hypertext Transfer Protocol，超文本传输协议）是一个应用层协议，它拥有分布式的、协作的、超媒体的信息系统对灵活性及速度的要求。它是一个通用的、无状态的、面向对象的协议，通过对它的请求方法（命令）进行扩展，可以被用于多种用途，例如名称服务器、分布式对象管理系统。HTTP的一个特性是它的数据表现类型允许系统的构建不需要依赖所传输的数据。<br>HTTP自从1990年就在WWW（World-Wide Web，万维网）上被广泛使用。</p>
+<p>本段摘自维基百科<br>名称服务器（英语：name server或nameserver）是指提供域名服务协议的程序或服务器。它可以将“人类可识别”的标识符，映射为系统内部通常为数字形式的标识码。域名系统（DNS）服务器是最著名的名称服务器。</p>
+</blockquote>
+<p>所以我们知道了HTTP实际上主要是用来做资源共享的，它是Web服务器与Web客户端使用的应用层通信协议：Web客户端向Web服务器请求Web资源，Web服务器做一定的处理将资源以及相关信息发给客户端。<br>那么问题来了，什么是Web资源？</p>
+<h3 id="Web资源与URI"><a href="#Web资源与URI" class="headerlink" title="Web资源与URI"></a>Web资源与URI</h3><p>所有能提供Web内容的东西都是Web资源，包括静态资源和动态资源。URI提供了一种统一的资源命名方式，它标记了资源的访问方式。URI分为URL和URN，一般情况下，URI指的就是URL。</p>
+<blockquote>
+<p>URI：Uniform Resource Identifier，统一资源标识符 &#032;<br>URL：Uniform Resource Locator，统一资源定位符 &#032;<br>URN：Uniform Resource Name，统一资源名称 &#032;</p>
+</blockquote>
+<p>URL拥有固定的语法格式，因方案（scheme）而异，看下面的例子：</p>
+<p>HTTP：<code>http://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;?&lt;query&gt;#&lt;frag&gt;</code><br>HTTPS：<code>https://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;?&lt;query&gt;#&lt;frag&gt;</code><br>FTP：<code>ftp://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;</code><br>FILE：<code>file://&lt;host&gt;/&lt;path&gt;</code></p>
+<p>关于URL格式的更详细信息可以参考rfc1738。</p>
+<p>注意，方案即代表着协议，URL并不局限于HTTP协议。下面我们详细讨论一下HTTP的URL。</p>
+<table> <thead> <tr><th style="width:150px" colspan="2"> 组件 </th><th style="width:250px"> 意义 </th><th style="width:100px"> 是否可选 </th></tr> </thead> <tbody> <tr><td> <code>&lt;scheme&gt;</code> </td><td> 方案 </td><td> 指明了解析URL的程序使用什么协议，方案名是大小写无关的 </td><td> 必须 </td></tr> <tr><td> <code>&lt;host&gt;</code> </td><td> 主机 </td><td> 标识了资源所在的宿主机器，也就是服务器 </td><td> 必须 </td></tr> <tr><td> <code>&lt;port&gt;</code> </td><td> 端口 </td><td> 说明了服务器正在监听的网络端口 </td><td> 有默认值 </td></tr> <tr><td> <code>&lt;path&gt;</code> </td><td> 路径 </td><td> 指明了资源所在的地方 </td><td> 可选 </td></tr> <tr><td> <code>&lt;query&gt;</code> </td><td> 查询字符串 </td><td> 额外传递给服务期的信息 </td><td> 可选 </td></tr> <tr><td> <code>&lt;frag&gt;</code> </td><td> 片段 </td><td> 表示资源内部的一个片段，仅由客户端使用，客户端不能将片段传送给服务器 </td><td> 可选 </td></tr> </tbody> </table>
+
+<p>HTTP的URL与HTTPS的URL很像，不过HTTP的端口默认值为80，HTTPS的端口默认值为443。</p>
+<p>URL分为相对URL和绝对URL。上面讨论的都是绝对URL，单独的相对URL没有任何意义。相对URL可以通过基础URL来推导成绝对URL。基础URL可能由包含相对URL的资源显式指定（HTML里的<base>标签可以指定基础URL），如果没有显式指定，则可以由包含相对URL的资源确定。相对URL推导成绝对URL的算法在rfc1808中指定，后来又合并到rfc2396中。</p>
+<p>URL由ASCII中除空格外的可打印字符表示，其他的字符我们称之为受限字符或者不安全字符，这些字符在表示URL时需要转义。</p>
+<blockquote>
+<p>客户端应该且只应该对所有受限/不安全字符进行转义，有些恶意的客户端会对额外的字符进行转义以绕过Web过滤程序的模式匹配。</p>
+<p>URL中要转义的值最好在ASCII字符范围内（0 ~ 127），包含其他字符可能会导致一些问题。总之，URL对国际化的支持还是不够友好，尽量只使用英文字符。</p>
+</blockquote>
+<p>URL表示了资源的位置，一旦资源被移走，URL就会失效。URN则为特定内容提供了一个稳定的名称，与位置无关。例如<code>urn:ietf:rfc:2616</code>用来表示文档rfc2616。URN当前仍处于试验阶段，它需要一个架构来解析资源的位置，目前缺乏此类架构。</p>
+<p>永久统一资源定位符（PURL）可以用URL来实现与URN相同的功能，引入一个中间层对资源的实际URL登记和跟踪，当使用失效的URL访问时，该中间层重定向到实际的URL上去。</p>
+<h3 id="HTTP报文"><a href="#HTTP报文" class="headerlink" title="HTTP报文"></a>HTTP报文</h3><p>在计算机网络中，我们一般将应用层要发送的数据称为报文。报文是来自客户端的请求数据或者是来自服务端的响应数据。HTTP报文是基于文本行的格式化数据，尽管这对计算机来说可能不够友好（影响效率又容易出错），可是这也增加了HTTP的可扩展性和可调试性（当我们拿到一条报文时不必去查找二进制与实际意义的对应关系）。这样还是有些好处的。</p>
+<blockquote>
+<p>HTTP规范中要求应该用<code>&lt;CR&gt;&lt;LF&gt;</code>两个字符（即<code>\r\n</code>，包含一个回车符和一个换行符）来表示文本行的结束，但并不是所有程序都遵守这个规范，稳健的程序应该接受单个换行符作为行的终止。</p>
+</blockquote>
+<p>HTTP报文由三个部分组成：一个对报文进行描述的起始行（start line），零个或多个说明属性的首部（header），以及可选的、包含数据的实体主体（entity-body，实体的主体部分）。</p>
+<blockquote>
+<p>实体（entity）由实体首部与实体主体组成，实体首部描述了与实体相关的一些属性。如不做特殊说明，下面的“实体的主体部分”、“实体主体”是等价的。</p>
+</blockquote>
+<p>HTTP请求报文（request message）的语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;method&gt; &lt;request-uri&gt; &lt;HTTP-version&gt;</div><div class="line">&lt;headers&gt;</div><div class="line"></div><div class="line">&lt;entity-body&gt;</div></pre></td></tr></table></figure></p>
+<p>HTTP响应报文（response message）的语法如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;HTTP-version&gt; &lt;status-code&gt; &lt;reason-phrase&gt;</div><div class="line">&lt;headers&gt;</div><div class="line"></div><div class="line">&lt;entity-body&gt;</div></pre></td></tr></table></figure></p>
+<p>先对各部分的作一下简要说明：</p>
+<ul>
+<li>方法 <code>&lt;method&gt;</code><br>  指明了将要以何种方式来访问由请求URI指定的资源。方法是大小写敏感的。</li>
+<li>请求URI <code>&lt;request-uri&gt;</code><br>  包含资源绝对路径的URL，服务器可以假定自己是URL的主机/端口。</li>
+<li>HTTP版本 <code>&lt;HTTP-version&gt;</code><br>  包含HTTP版本的主版本号和次要版本号，如HTTP/0.9，HTTP/1.1等。版本号是为了让通信双方了解彼此的能力。</li>
+<li>状态码 <code>&lt;status-code&gt;</code><br>  由三位数字组成，表明了请求是否被理解或被满足，描述了请求过程中发生的情况。</li>
+<li>原因短语 <code>&lt;reason-phrase&gt;</code><br>  用简短的文字来描述状态代码产生的原因。原因短语不做特殊限制，通常使用通用的描述方便交流。客户端不需要检查或显示原因短语。</li>
+<li>首部 <code>&lt;headers&gt;</code><br>  可以有零个或多个首部，每个首部包含一个名字，后面跟着一个冒号（:），然后是一个可选的空格，接着是一个值，最后是一个<cr><lf>。首部描述了请求或者响应的一些属性，有些HTTP版本要求报文中必须包含某些特定的首部。</lf></cr></li>
+<li>实体主体 <code>&lt;entity-body&gt;</code><br>  包含一个由任意数据组成的数据块。并不是所有的报文都包含实体主体，由请求方法与响应状态码决定。</li>
+</ul>
+<p>注意，起始行和首部都是纯文本的，但实体主体没有此限制。</p>
+<p>下面是一个请求报文的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">GET /example.html HTTP/1.1</div><div class="line">Host: 127.0.0.1:8080</div><div class="line">Connection: keep-alive</div><div class="line">Upgrade-Insecure-Requests: 1</div><div class="line">User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</div><div class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</div><div class="line">Accept-Encoding: gzip, deflate, sdch, br</div><div class="line">Accept-Language: zh-CN,zh;q=0.8</div></pre></td></tr></table></figure></p>
+<p>下面是一个响应报文的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Date: Sun, 16 Apr 2017 01:40:46 GMT</div><div class="line">Server: Apache/2.4.23 (Win64) PHP/5.6.24</div><div class="line">Last-Modified: Sun, 16 Apr 2017 01:40:01 GMT</div><div class="line">ETag: &quot;8a-54d3ec0d24918&quot;</div><div class="line">Accept-Ranges: bytes</div><div class="line">Content-Length: 138</div><div class="line">Keep-Alive: timeout=5, max=100</div><div class="line">Connection: Keep-Alive</div><div class="line">Content-Type: text/html</div><div class="line"></div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;title&gt;EXAMPLE&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">    &lt;p&gt;Hello, This is an example page.&lt;/p&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>TIPS：借助浏览器的F12调试工具可以看到报文的具体内容哦~</p>
+</blockquote>
+<p>下面稍微详细介绍一下报文的各个部分：</p>
+<p><strong>1. 协议版本</strong><br>HTTP的第一个版本是HTTP/0.9，协议内容非常简单：请求报文只有一个请求行且没有版本描述，响应报文只有实体主体。HTTP/0.9只支持GET方法，而且服务器只能回应HTML格式的字符串，不能回应别的格式。定义它的初衷只是为了获取简单的HTML对象。很快它就被HTTP/1.0取代了。</p>
+<p>HTTP/1.0是第一个得到广泛使用的HTTP版本，它于1996年5月发布，定义于rfc1945当中。协议的内容大大增加，添加了版本号、首部、一些额外的方法以及服务器响应的状态码。HTTP/1.0引入了POST方法和HEAD方法，而且任何格式的内容都可以发送了。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件。这为互联网的大发展奠定了基础。HTTP/1.0的新特性使得HTTP的可用性大大提高，为了满足商业需要，各个Web客户端和服务器厂商都在向HTTP中添加各种新特性，于是产生了一个HTTP的非正式扩展版本，已经成为非官方的事实标准，通常称之为HTTP/1.0+。</p>
+<p>HTTP/1.1对HTTP/1.0+进行改进，主要关注的是设计中的缺陷与语义明确，引入了一些性能优化措施，并删除了一些不好的特性。HTTP/1.1最初于1997年1月发布，定义于rfc2068中，后来又在1999年6月重新修订，形成了现在广为人知的rfc2616。再后来又由多个rfc文档进行补充详细说明。</p>
+<blockquote>
+<p>本段信息翻译自rfc2616<br>超文本传输协议（HTTP）是一个分布式、协作、超媒体信息系统的应用层协议。在1990年WWW全球信息刚刚起步的时候HTTP就得到了应用。HTTP的第一个版本我们称之为HTTP/0.9，是一种为互联网原始数据传输服务的简单协议。由rfc1945定义的HTTP/1.0进一步完善了这个协议。它允许消息以类MIME消息的格式传送，它包括传输数据的元信息和对请求/响应语义的修饰。但是，HTTP/1.0没有充分考虑到分层代理、缓存的影响和持久连接及虚拟主机的需求。并且随着不完善的HTTP/1.0应用程序的激增，这就迫切需要一个新的版本，以便能使两个通信程序能够确定彼此的真实能力。</p>
+<p>此规范定义的协议叫做“HTTP/1.1”，这个协议与HTTP/1.0相比，此规范更为严格，以确保各个协议的特征得到可靠实现。</p>
+</blockquote>
+<p>HTTP/2已经在2015年5月发布了草案，定义于rfc7540。这个版本删除了次要版本号，所以你看到的是HTTP/2而不是HTTP/2.0。这个版本将HTTP的语义进行了优化，比如采用了二进制描述。（这个版本的rfc文档已不再由T. Berners-Lee起草，而是由SPDY的相关人员编写）</p>
+<blockquote>
+<p>本段信息翻译自<a href="https://http2.github.io/faq/" target="_blank" rel="external">https://http2.github.io/faq/</a><br>Q: HTTP/2会替换HTTP/1.x吗？<br>A: 工作组的目标是HTTP/1.x的典型用途可以使用HTTP/2并看到一些好处。话虽如此，我们不能强迫世界迁移，并且由于人们部署代理和服务器的方式，HTTP/1.x很可能仍然再使用一段时间。</p>
+</blockquote>
+<p>现在已经有一部分客户端服务器已能支持HTTP/2（的部分特性？），但HTTP/1.1在一段时间内仍然会是主流版本。</p>
+<p><strong>2. 方法</strong><br>方法除了HTTP协议预定义的一些请求方法外是可以扩展的，下表列出的方法被大多数商业服务器所实现。</p>
+<table> <thead> <tr><th style="width:75px">方法</th><th style="width:200px">描述</th> <th style="width:90px">是否包含实体</th><th style="width:60px">起始版本</th></tr> <thead> <tbody> <tr><td><code>GET</code></td><td>从服务器获取一份文档</td><td>否</td><td>HTTP/0.9</td></tr> <tr><td><code>HEAD</code></td><td>向服务器获取以GET方法请求时文档的首部</td><td>否</td><td>HTTP/1.0</td></tr> <tr><td><code>POST</code></td><td>向服务器发送要处理的数据</td><td>是</td><td>HTTP/1.0</td></tr> <tr><td><code>TRACE</code></td><td>对可能经过代理服务器的报文进行跟踪</td><td>否</td><td>HTTP/1.1</td></tr> <tr><td><code>OPTIONS</code></td><td>了解服务器可以对资源执行哪些方法</td><td>否</td><td>HTTP/1.1</td></tr> </tbody> </thead></thead></table>
+
+<p>并不是所有的服务器都实现了所有方法。如果服务器不理解客户端发送的方法，就会返回501或者405的状态码。</p>
+<p>HTTP将不会在服务器上产生任何结果的方法称为安全方法（这里的产生结果是指修改数据），GET和HEAD被设计为安全方法。实际上安全方法并非真的不会产生结果，这取决于Web开发者。安全方法被设计的目的在于提示/通知用户不安全的方法可能会导致一些后果（比如点击支付按钮的可能导致账户扣款）。</p>
+<p><strong>3. 状态码</strong></p>
+<p>方法告诉服务器做什么事情，状态码则告诉客户端发生了什么事情。状态码由三位数字组成，根据第一位数字分成五大类：</p>
+<ul>
+<li>1xx：信息型状态码</li>
+<li>2xx：成功状态码</li>
+<li>3xx：重定向状态码</li>
+<li>4xx：客户端错误状态码</li>
+<li>5xx：服务端错误状态码</li>
+</ul>
+<p>原因短语通常和状态码一起使用，但原因短语是给人看的，比如，对客户端或服务器来说，它对<code>200 OK</code>和<code>200 Done</code>的处理方式完全一样。尽管如此，大多数服务器还是会返回HTTP协议推荐的原因短语。</p>
+<p>下表列出了一些常见的错误码：</p>
+<table> <thead> <tr><th style="width:50px">状态码</th><th style="width:150px">原因短语</th> <th style="width:250px">含义</th></tr> <thead> <tbody> <tr><td>200</td><td>OK</td><td>成功请求，实体包含所请求的资源</td></tr> <tr><td>304</td><td>Not Modified</td><td>客户端发起条件GET请求，同时所请求资源未修改就返回这个状态码，表明可以使用缓存。返回这个状态码时不应该包含实体主体</td></tr> <tr><td>400</td><td>Bad Request</td><td>告知客户端发了一个错误的请求</td></tr> <tr><td>403</td><td>Forbidden</td><td>服务器拒绝请求，返回实体可能说明拒绝原因，但这个状态码通常是在服务器不想说明拒绝原因的时候使用的</td></tr> <tr><td>404</td><td>Not Found</td><td>请求资源不存在</td></tr> <tr><td>414</td><td>Request URI Too Large</td><td>请求的URI太长，超过服务器能处理的范围</td></tr> <tr><td>500</td><td>Internal Server Error</td><td>服务器遇到了一个妨碍完成请求的错误</td></tr> <tr><td>502</td><td>Bad Gateway</td><td>作为代理或网关的服务器收到了错误响应时使用此状态码<sub>**</sub></td></tr> </tbody> </thead></thead></table>
+
+<p>** 经验告诉我们，从一个运行良好的站点收到此状态码表明这个站点连接数过多超出了后端服务器处理的能力，也就是网站所支持的并发连接数不够。</p>
+<p>当客户端收到了它不理解的状态码时会根据这个状态码所在的大类来确定如何处理响应。</p>
+<p><strong>4. 首部</strong></p>
+<p>首部和方法、响应码配合工作，来决定客户端和服务器能做什么事情。首部可以分为五个主要类型。</p>
+<ul>
+<li>通用首部：客户端和服务器都可以使用的首部。</li>
+<li>请求首部：请求报文特有的首部</li>
+<li>响应首部：响应报文特有的首部</li>
+<li>实体首部：对应于实体的主体部分的首部</li>
+<li>扩展首部：由应用程序开发者创建的非标准首部</li>
+</ul>
+<p>下面举几个例子：</p>
+<table> <thead> <tr><th style="width:75px">类别</th><th style="width:150px">首部</th> <th style="width:250px">含义</th></tr> <thead> <tbody> <tr><td rowspan="2">通用首部</td><td><code>Date</code></td><td>提供日期和时间，说明报文的创建时间</td></tr> <tr><td><code>Cache-Control</code></td><td>用于控制缓存</td></tr> <tr><td rowspan="2">请求首部</td><td><code>Host</code></td><td>说明所请求的服务器主机</td></tr> <tr><td><code>If-Modified-Since</code></td><td>只有在指定日期后资源被修改过才完成这个请求，否则返回304</td></tr> <tr><td>响应首部</td><td><code>Server</code></td><td>服务器应用程序软件的名称和版本</td></tr> <tr><td rowspan="3">实体首部</td><td><code>Content-Length</code></td><td>说明实体主体的长度</td></tr> <tr><td><code>Content-Type</code></td><td>说明实体的MIME类型</td></tr> <tr><td><code>Last-Modified</code></td><td>说明实体的最后一次修改日期和时间</td></tr> </tbody> </thead></thead></table>
+
+<p><span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png"></span><span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png"></span><span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png"></span></p>
+<blockquote>
+<p>理解HTTP协议的关键在于对HTTP在不同场景所产生报文的理解，也就是理解不同的状态码、首部具体应用场景。后面几篇文章将会介绍一些重点的模块，想要了解更多可以继续关注我的博客<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png"></span>，参考资料中给出了更为完整更为权威的文档，也可以读一下。</p>
+<p>HTTP的复杂性主要在于通信的客户端或服务器所支持的HTTP协议可能不同，或者没有正确实现协议要求的某些内容。</p>
+</blockquote>
+<p>到现在为止我们已经知道HTTP报文的基本组成，但是HTTP协议在网络中是如何工作的呢？</p>
+<h3 id="HTTP事务"><a href="#HTTP事务" class="headerlink" title="HTTP事务"></a>HTTP事务</h3><p>HTTP协议是应用层的通信协议，它依赖传输层的TCP协议来完成报文的发送与接收。TCP协议是面向字节流的可靠的传输层协议，它可以保证数据无误的从发送端到达接收端，因此我们在使用HTTP协议的时候，无需考虑报文是否被正确传输，这些事情TCP都帮我们做了。</p>
+<p>HTTPS协议是基于SSL/TLS的HTTP协议。抽象的看，HTTPS主要是在TCP和HTTP之间加了一层“安全层”（确切来说应该是OSI中的表示层和会话层）利用SSL/TLS来对数据进行加密解密。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">                                    +------------------+</div><div class="line">                                    |       HTTP       | 应用层</div><div class="line">+------------------+                |------------------|</div><div class="line">|       HTTP       | 应用层         |    SSL or TLS    | “安全层”</div><div class="line">|------------------|                |------------------|           </div><div class="line">|        TCP       | 传输层         |        TCP       | 传输层    </div><div class="line">|------------------|                |------------------|           </div><div class="line">|        IP        | 网络层         |        IP        | 网络层    </div><div class="line">|------------------|                |------------------|           </div><div class="line">|     网络接口     | 数据链路层     |     网络接口     | 数据链路层</div><div class="line">+------------------+                +------------------+</div><div class="line">    HTTP协议栈                           HTTPS协议栈</div></pre></td></tr></table></figure>
+<p>HTTP在传输数据前，先建立TCP连接，连接建立好后就在客户端和服务器间形成了一条虚拟电路，HTTP报文可以沿着这条虚拟电路到达指定位置，报文发送完毕可以根据具体情况决定是否需要关闭连接。</p>
+<p>关于TCP的信息这里不做过多阐述，我们重点关注HTTP的工作过程。</p>
+<p>我们将一条客户端发送到服务器的请求报文与服务器返回给客户端的响应报文合起来称为一个HTTP事务。<br>最初一个TCP连接仅处理一个HTTP事务。后来为了优化性能提出了持久连接的概念。尽管如此，我们仍需知道HTTP协议是无状态的，也就是说在多个HTTP事务中，每个事务都是独立的，无论TCP连接是持久的还是完成一个事务就断开，HTTP都不会记录此事务的连接状态（对比FTP，FTP在进行用户认证后会一直保持和这个用户的会话，直至关闭连接，但HTTP不会）。</p>
+<p>一个HTTP事务的处理过程举例：</p>
+<ol>
+<li>客户端从URL中解析出服务器的主机名</li>
+<li>客户端将服务器主机名转化为IP地址</li>
+<li>客户端从URL中解析出端口号（如果有）</li>
+<li>客户端建立与服务器的TCP连接</li>
+<li>客户端向服务器发送一条HTTP请求报文</li>
+<li>服务器处理客户端发送的请求，生成响应报文发回客户端</li>
+<li>客户端收到响应报文，关闭连接</li>
+</ol>
+<h3 id="Web结构组件"><a href="#Web结构组件" class="headerlink" title="Web结构组件"></a>Web结构组件</h3><p>在这篇文章中，我不停提到服务器和客户端，那么到底什么是服务器和客户端，HTTP的服务器和客户端到底都有哪些呢？<br>首先得声明，服务器和客户端既可以指软件应用程序，也可以指运行对应软件的硬件设备，可以根据语境区分出具体含义。下面的解释主要针对软件的概念来描述。</p>
+<ol>
+<li>服务器（server）<br>Web服务器是Web资源的拥有者，它可以处理来自Web客户端的请求。这是一个被动的过程，Web服务器不会主动向Web客户端发送报文。Web服务器因为使用HTTP作为通信协议，所以也称为HTTP服务器。常见的Web服务器有Nginx、Apache httpd、Apache tomcat、Lighttpd，Microsoft IIS等等。HTTP响应报文中的Server首部表明了服务器的名称和版本。</li>
+</ol>
+<blockquote>
+<p>值得一提的是上面说到的Apache tomcat和Microsoft IIS，它们是一种应用服务器，也可以提供与HTTP服务器相同的功能。不过因为它们主要处理动态内容，所以处理静态页面的性能远远不如Nginx、httpd等专注处理静态页面的HTTP服务器。在实际应用中，通常会将其作为Nginx/httpd的后端服务器来专门处理动态内容。</p>
+</blockquote>
+<ol>
+<li>客户端（client）<br>Web客户端可以发送HTTP请求报文的程序，通常还会解析收到的HTTP响应报文。最常见的Web客户端就是各种浏览器。除了浏览器还有一类自动发送HTTP请求的程序，我们将其称为Web机器人（也叫爬虫，网络蜘蛛）。某些客户端程序如Telnet也可以当作Web客户端来使用。</li>
+</ol>
+<p>可以代替用户生成请求报文的客户端，我们称之为用户代理（user agent），Web客户端主要以用户代理为主，很少有人会主动自己编写请求报文发送给服务器。用户代理在发送请求的时候通常会带上User-Agent首部来说明其信息。至于上面我举例的请求报文中为什么既有Mozilla又有AppleWebKit又有Safari，我表示也是亿脸蒙蔽<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/new_moon_with_face.png"></span><span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png"></span>，实际上我使用的浏览器是Chrome。</p>
+<p>除了服务器与客户端，还有一些其他Web组件。</p>
+<ol>
+<li>代理（proxy）<br>代理是位于服务器与客户端之间的HTTP中间实体，可以负责转发流量、内容过滤、性能优化等功能。也称为代理服务器。想了解代理的更多细节请继续关注我的博客<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png"></span>。</li>
+</ol>
+<blockquote>
+<p>关于Agent与Proxy<br>两者翻译成中文都是代理，这很容易引起困惑。可以这么理解：Agent是客户端，Proxy既是服务器又是客户端（即使说成是代理服务器仍不能掩饰它充当客户端角色的本质）</p>
+</blockquote>
+<ol>
+<li><p>缓存（cache）<br>缓存是一种特殊的代理服务器，它可以将经过代理的Web响应复制保存起来，以便下次更快地提供服务。正确部署和使用缓存可以很大的提高效率。缓存也叫Web缓存或者代理缓存。</p>
+</li>
+<li><p>网关（gateway）<br>网关分为协议网关和资源网关。<br>协议网关相当于一个协议转换程序，比如用户发送了一个获取文件请求，服务器可能通过HTTP/FTP网关从FTP服务器上将文件获取到发送给客户端。<br>资源网关则指应用程序获取另一个程序提供的数据，我们称之为网关API。第一个流行的网关API是CGI，由于性能的问题，人们又开发出了fastcgi。（关于CGI相关理论的学习还在我的计划列表中，暂时没法提供更多信息）</p>
+</li>
+<li><p>隧道（tunnel）<br>Web隧道可以通过HTTP连接来发送非HTTP的流量。至于具体实现方式我还没有理解清楚。。</p>
+</li>
+</ol>
+<h3 id="More…"><a href="#More…" class="headerlink" title="More…"></a>More…</h3><p>[1] rfc1945（HTTP/1.0）：<a href="https://www.ietf.org/rfc/rfc1945.txt" target="_blank" rel="external">https://www.ietf.org/rfc/rfc1945.txt</a><br>[2] rfc2616（HTTP/1.1）：<a href="https://www.ietf.org/rfc/rfc2616.txt" target="_blank" rel="external">https://www.ietf.org/rfc/rfc2616.txt</a><br>[3] rfc7540（HTTP/2）：<a href="https://www.ietf.org/rfc/rfc7540.txt" target="_blank" rel="external">https://www.ietf.org/rfc/rfc7540.txt</a><br>[4] 关于HTTP/2的一些常见问题：<a href="https://http2.github.io/faq/" target="_blank" rel="external">https://http2.github.io/faq/</a><br>[5] Nginx官网：<a href="http://nginx.org/" target="_blank" rel="external">http://nginx.org/</a></p>
+<p>Next. 《HTTP权威指南》学习总结2——代理和缓存</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/web开发，网络编程/" rel="tag">#web开发，网络编程</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/03/plans-in-2017/" rel="next" title="2017计划">
+                <i class="fa fa-chevron-left"></i> 2017计划
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/avatar.png"
+               alt="Kiwi Yan" />
+          <p class="site-author-name" itemprop="name">Kiwi Yan</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-number">1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是HTTP协议？"><span class="nav-number">2.</span> <span class="nav-text">什么是HTTP协议？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web资源与URI"><span class="nav-number">3.</span> <span class="nav-text">Web资源与URI</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP报文"><span class="nav-number">4.</span> <span class="nav-text">HTTP报文</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP事务"><span class="nav-number">5.</span> <span class="nav-text">HTTP事务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Web结构组件"><span class="nav-number">6.</span> <span class="nav-text">Web结构组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#More…"><span class="nav-number">7.</span> <span class="nav-text">More…</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-pencil">
+    <i class="fa fa-pencil"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kiwi Yan</span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

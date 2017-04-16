@@ -235,8 +235,8 @@
             
               
                 
-                <a class="post-title-link" href="/2017/02/05/rfc1945/" itemprop="url">
-                  Editing...
+                <a class="post-title-link" href="/2017/04/15/http-intro/" itemprop="url">
+                  《HTTP权威指南》学习总结1——HTTP协议概述
                 </a>
               
             
@@ -249,8 +249,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2017-02-05T21:35:15+08:00" content="2017-02-05">
-              2017-02-05
+            <time itemprop="dateCreated" datetime="2017-04-15T21:01:48+08:00" content="2017-04-15">
+              2017-04-15
             </time>
           </span>
 
@@ -278,24 +278,14 @@
 
       
         
-          
-            <blockquote>
-<p>RFC1945: 超文本传输协议 – HTTP/1.0 &#032;<br>作者：T. Berners-Lee, R. Fielding, H. Frystyk &#032;<br>类别：信息型（INFORMATIONAL） &#032;<br>1996年5月 &#032;</p>
-</blockquote>
-<h3 id="关于此文档"><a href="#关于此文档" class="headerlink" title="关于此文档"></a>关于此文档</h3><p>此文档为互联网社区提供信息，并没有指定任何互联网标准。此文档没有分发限制。</p>
-<h3 id="IESG提示"><a href="#IESG提示" class="headerlink" title="IESG提示"></a>IESG提示</h3><p>IESG（Internet Engineering Steering Group，互联网工程指导委员会）已经在关注此协议，并期待不久后被标准的文档所代替。</p>
-<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>HTTP（Hypertext Transfer Protocol，超文本传输协议）是一个应用层协议，它拥有分布式的、协作的、超媒体的信息系统对灵活性及速度的要求。它是一个通用的、无状态的、面向对象的协议，通过对它的请求方法（命令）进行扩展，可以被用于多种用途，例如名称服务器、分布式对象管理系统。HTTP的一个特性是它的数据表现类型允许系统的构建不需要依赖所传输的数据。<br>HTTP自从1990年就在WWW（World-Wide Web，万维网）上被广泛使用。该规范说明了HTTP/1.0的用法。</p>
-<blockquote>
-<p>本段摘自维基百科。<br>名称服务器（英语：name server或nameserver）是指提供域名服务协议的程序或服务器。它可以将“人类可识别”的标识符，映射为系统内部通常为数字形式的标识码。域名系统（DNS）服务器是最著名的名称服务器。</p>
-</blockquote>
-<h1 id="1-导论"><a href="#1-导论" class="headerlink" title="1. 导论"></a>1. 导论</h1><h2 id="1-1-目的"><a href="#1-1-目的" class="headerlink" title="1.1 目的"></a>1.1 目的</h2><p>HTTP是一个应用层协议，它拥有分布式的、协作的、超媒体的信息系统对灵活性及速度的要求。HTTP自从1990年就在WWW上被广泛使用。这份规范说明了HTTP/1.0的用法。本规范描述了那些在大多数HTTP/1.0客户端和服务器上看起来已经实现的特性。本规范分为两部分，一部分描述了HTTP那些被一致实现的功能，放在文档的正文部分，另一部分少量未被一致实现的特性列在附录D里。</p>
-<p>实用的信息系统需要更多的功能，而不仅仅是数据的获取，包括搜索、前端更新及注解。HTTP允许使用开放的方法集来表示请求的目的，它以URI——即一个位置[URL]者名字[URN]——作为基本规则，指明方法要使用的资源。HTTP使用与邮件和MIME相似的格式来传递消息。</p>
-<blockquote>
-<p>URI：Uniform Resource Identifier，统一资源标识符 &#032;<br>URL：Uniform Resource Location，统一资源定位 &#032;<br>URN：Uniform Resource Name，统一资源名称 &#032;<br>MIME：Multipurpose Internet Mail Extensions，多用途互联网邮件扩展 &#032;</p>
-</blockquote>
-<p>HTTP也作为用户代理、代理服务器/网关与其它网络协议进行通讯的通用协议，比如SMTP、NNTP、FTP、Gopher、WAIS等。HTTP允许基本超媒体访问来自不同应用程序的资源，并简化用户代理的实现。</p>
-
-          
+          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png"/></span>。</p>
+<p>不说废话，进入正题。</p>
+<p>如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web系统的最基本协议，但是很多开发者都很少系统了解过，殊不知了解HTTP协议可以解决很多开发过程中的疑难杂症。因为自己在两年前学习网络编程的时候想着做个什么东西出来，当时就选了一个HTTP服务器，从此与HTTP结下了不解之缘，工作以后到目前为止主要工作内容就是Web开发，于是又勾起了那段青涩的回忆，也开始想深入了解一下她，于是乎……（对不起我编不下去了），总之，我写下了这几篇博客来作为自己对最近一段时间学习的总结。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/04/15/http-intro/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -386,37 +376,13 @@
 
       
         
-          
-            <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>话说自己每年都会制订一个计划，结果往往是以失败告终，从来都没有完成过。今年依然照旧制订计划，显然有些晚了，以往都是在年前（无论阴历还是阳历），而现在已经年后了。所幸的是，年后的工作还没有开始，所以还是来的及的。</p>
-<h3 id="计划方法论"><a href="#计划方法论" class="headerlink" title="计划方法论"></a>计划方法论</h3><p>工作了之后，导师经常提起的一个词语就是“方法论”。方法论说的通俗一点就是套路。总结经验教训，结合道听途说，形成自己做事情的套路，那么方法论就形成了。<br>仔细想想以前制订的计划，对比完成情况，要么是计划假、大、空，要么就是自己半途而废。工作当中也经常会涉及到进度安排，刚开始的时候也是按自己的想法想当然的安排，经常导致不能按时间完成，工作了半年以后，进度拖的时间没有刚开始的时候那么长了。所以这方面也是吃了很多亏，当然也收获了一点经验，不过已经足够了。<br>关于制订计划，在管理学中有一项原则叫做SMART。SMART就是Specific/Measurable/Attainable/Relevant/Time-based。这是前人总结出来的经验并加以验证过的，所以制订计划时这五项要谨记。</p>
-<blockquote>
-<p>Specific: 具体的 &#032;<br>Measurable: 可度量的 &#032;<br>Attainable: 可实现的 &#032;<br>Relevant: 相关的 &#032;<br>Time-based: 有时限的 &#032;</p>
-</blockquote>
-<p>关于SMART在实践中的应用，我按自己的理解总结如下：<br>在一定的时间段内，制订一个（或几个）明确的目标，细化到具体的可以量化的小点，这些小点各自独立，或者有序关联（依赖关系没有环），各个击破就可以完成大的目标。同时考虑自身能力与其他环境情况适当留出一些buffer，以应对非计划内的情况。</p>
-<h3 id="2017年计划"><a href="#2017年计划" class="headerlink" title="2017年计划"></a>2017年计划</h3><p>计划之前得先明确目标，既然是在技术博客上写的文章，这里主要写一些自己的技术成长方面：</p>
-<ol>
-<li>工作了半年，主要任务是Web开发，遇到过很多问题未曾深究，加上自己在学校时写过简单的Web服务器，对这方面的知识知道一点，但都是囫囵吞枣，现在想着有必要深究一下，所以想阅读一下HTTP协议的一些标准文档。</li>
-<li>职位是后台开发，但是自己好久没有做过相关的开发，加上之前学的稀里糊涂，所以得系统学习一遍，结合现在的一些想法应该会有一些新的理解。</li>
-<li>计算机基本功是个需要长期学习的东西，不紧急但是很重要，目标是看完《CSAPP》。</li>
-<li>“内功心法”相关：看完《精进》，最好能够有些感悟。</li>
-</ol>
-<p>目标就是这样，具体实现方式：</p>
-<ol>
-<li>阅读HTTP协议相关的RFC文档，主要是HTTP/1.1相关的文档，原文是英文的，可以翻译出来，一边学习计算机，一边学习英语，一举两得（手动滑稽）。发表成博客，以供参考。</li>
-<li>后台开发方面，复习/学习《APUE》；重新学习《UNP》。遇到问题深入探究，值得玩味的发表成博客。</li>
-<li>看完《CSAPP》《精进》。</li>
-</ol>
-<p>假设这一年有2/3的日子可以看书，每天看10页书（休息日可以看更多，可以防止数字估算过大），那么一年就可以看<code>365*2/3*10 = 2433</code>页书，嗯，还挺多的。时间buffer有了，希望自己可以完成。</p>
-<p>既然自己花时间做了这个博客，好久了也没写过几篇，一定要利用起来，所以上面特地提到写博客这个方式。</p>
-<p>下面是计划的具体内容：</p>
-<ol>
-<li>每月至少完成一篇技术博客。</li>
-<li>每季度至少翻译一篇RFC文档。</li>
-</ol>
-<p>ok，明天上班，计划也可以开始执行了。</p>
-<p>另：我的博客地址就是<a href="https://kiwi-yan.github.io/">https://kiwi-yan.github.io/</a>，无耻的求收藏，求监督，顺便求一个未完成的惩罚方式。。。</p>
-
-          
+          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>话说自己每年都会制订一个计划，结果往往是以失败告终，从来都没有完成过。今年依然照旧制订计划，显然有些晚了，以往都是在年前（无论阴历还是阳历），而现在已经年后了。所幸的是，年后的工作还没有开始，所以还是来的及的。</p>
+<h3 id="计划方法论"><a href="#计划方法论" class="headerlink" title="计划方法论"></a>计划方法论</h3><p>工作了之后，导师经常提起的一个词语就是“方法论”。方法论说的通俗一点就是套路。总结经验教训，结合道听途说，形成自己做事情的套路，那么方法论就形成了。<br>仔细想想以前制订的计划，对比完成情况，要么是计划假、大、空，要么就是自己半途而废。工作当中也经常会涉及到进度安排，刚开始的时候也是按自己的想法想当然的安排，经常导致不能按时间完成，工作了半年以后，进度拖的时间没有刚开始的时候那么长了。所以这方面也是吃了很多亏，当然也收获了一点经验，不过已经足够了。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/02/03/plans-in-2017/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -507,87 +473,15 @@
 
       
         
-          
-            <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。</p>
+          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>最近在做一些数据处理和计算的工作，因为数据是以.csv格式保存的，因此刚开始直接用Excel来处理。但是做着做着发现重复的劳动其实并没有多大的意义，于是就想着写个小工具帮着处理。以前正好在一本书上看到过使用Python来处理Excel表格，可惜没有仔细看。于是我到处查找资料，终于算是完成了任务，因此撰写此文就算是总结吧。</p>
 <p>在这里我还会顺带介绍一下如何处理.csv文件，因为某些情况下这是必须的（后面会提到）。</p>
 <h3 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h3><p>下面的环境配置是针对Windows操作系统的，其他操作系统差别不是很大，可以参考一下。</p>
 <p>我使用的Python版本号是2.7.12，如果你的Python是2.x，请确保在2.6以上。在Python 3.x上可能会有些不太一样，所以要注意，可以参考其他的文档和博客。</p>
-<p>Python自带的<code>csv</code>模块可以处理.csv文件。</p>
-<p><code>xlrd</code>和<code>xlwt</code>两个模块分别用来读Excel和写Excel，只支持.xls和.xlsx格式，Python不默认包含。这两个模块之间相互独立，没有依赖关系，也就是说可以根据需要只安装其中一个。</p>
-<p><code>xlutils</code>模块可以同时读写一个已存在的Excel文件，依赖于<code>xlrd</code>和<code>xlwt</code>。</p>
-<p>安装这三个模块时，可以去<a href="https://pypi.python.org/pypi" target="_blank" rel="external">PyPI</a>去搜索需要的模块并下载。在我写这篇文章时，<code>xlrd</code>是有一个适合python 3.x的.whl文件和一个通用的.tar.gz的源码文件。<code>xlwt</code>是提供了同时适用于python 2.x和3.x的.whl文件和一个通用的.tar.gz的源码文件，还提供了pip的安装方式。<code>xlutils</code>与<code>xlwt</code>情况相同。</p>
-<blockquote>
-<p>安装过程中我是默认你已经配好了环境变量，并且pip是可用的，如果在命令行里执行pip命令显示找不到命令，可以在网上搜索相关解决方案，这里不做赘述。</p>
-</blockquote>
-<p>下面简单说一下几种安装模块的方式。</p>
-<p>安装源码文件需要先解压，然后进入到源码目录执行下面命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure></p>
-<p>安装.whl文件执行下面命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install &lt;你的.whl文件&gt;</div></pre></td></tr></table></figure></p>
-<p>使用pip安装前要确认你的网络是可用的，然后执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install &lt;模块名&gt;</div></pre></td></tr></table></figure></p>
-<p>当你看到类似Successfully的字样时，表明已经安装成功了。如果没成功，那就一定是有什么原因了，可以自己上网搜索具体解决方案。</p>
-<h3 id="使用xlrd读Excel"><a href="#使用xlrd读Excel" class="headerlink" title="使用xlrd读Excel"></a>使用<code>xlrd</code>读Excel</h3><p><code>xlrd</code>提供的接口比较多，常用的如下：</p>
-<p><code>open_workbook()</code>打开指定的Excel文件，返回一个Book对象。</p>
-<p>通过Book对象可以得到各个Sheet对象（一个Excel文件可以有多个Sheet，每个Sheet就是一张表格）。</p>
-<p><code>Book.nsheets</code>返回Sheet的数目。</p>
-<p><code>Book.sheets()</code>返回所有Sheet对象的list。</p>
-<p><code>Book.sheet_by_index(index)</code>返回指定索引处的Sheet。相当于<code>Book.sheets()[index]</code>。</p>
-<p><code>Book.sheet_names()</code>返回所有Sheet对象名字的list。</p>
-<p><code>Book.sheet_by_name(name)</code>根据指定Sheet对象名字返回Sheet。</p>
-<p>通过Sheet对象可以获取各个单元格，每个单元格是一个Cell对象。</p>
-<p><code>Sheet.name</code>返回表格的名称。</p>
-<p><code>Sheet.nrows</code>返回表格的行数。</p>
-<p><code>Sheet.ncols</code>返回表格的列数。</p>
-<p><code>Sheet.row(r)</code>获取指定行，返回Cell对象的list。</p>
-<p><code>Sheet.row_values(r)</code>获取指定行的值，返回list。</p>
-<p><code>Sheet.col(c)</code>获取指定列，返回Cell对象的list。</p>
-<p><code>Sheet.col_values(c)</code>获取指定列的值，返回list。</p>
-<p><code>Sheet.cell(r, c)</code>根据位置获取Cell对象。</p>
-<p><code>Sheet.cell_value(r, c)</code>根据位置获取Cell对象的值。</p>
-<p><code>Cell.value</code>返回单元格的值。</p>
-<p>下面是一段示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> xlrd</div><div class="line"></div><div class="line">wb = xlrd.workbook(<span class="string">'test.xls'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 打印每张表的最后一列</span></div><div class="line"><span class="comment"># 方法1</span></div><div class="line"><span class="keyword">for</span> s <span class="keyword">in</span> wb.sheets():</div><div class="line">    <span class="keyword">print</span> <span class="string">"== The last column of sheet '%s' =="</span> % (s.name)</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(s.nrows):</div><div class="line">        <span class="keyword">print</span> s.row(i)[<span class="number">-1</span>].value</div><div class="line"></div><div class="line"><span class="comment"># 方法2</span></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(wb.nsheets):</div><div class="line">    s = wb.sheet_by_index(i)</div><div class="line">    <span class="keyword">print</span> <span class="string">"== The last column of sheet '%s' =="</span> % (s.name)</div><div class="line">    <span class="keyword">for</span> v <span class="keyword">in</span> s.col_values(s.ncols - <span class="number">1</span>):</div><div class="line">        <span class="keyword">print</span> v</div><div class="line"></div><div class="line"><span class="comment"># 方法3</span></div><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> wb.sheet_names():</div><div class="line">    <span class="keyword">print</span> <span class="string">"== The last column of sheet '%s' =="</span> % (name)</div><div class="line">    s = wb.sheet_by_name(name)</div><div class="line">    c = s.ncols - <span class="number">1</span></div><div class="line">    <span class="keyword">for</span> r <span class="keyword">in</span> range(s.nrows):</div><div class="line">        <span class="keyword">print</span> s.cell_value(r, c)</div></pre></td></tr></table></figure></p>
-<h3 id="使用xlwt写Excel"><a href="#使用xlwt写Excel" class="headerlink" title="使用xlwt写Excel"></a>使用<code>xlwt</code>写Excel</h3><p>相对来说，<code>xlwt</code>提供的接口就没有<code>xlrd</code>那么多了，主要如下：</p>
-<p><code>Workbook()</code>是构造函数，返回一个工作簿的对象。</p>
-<p><code>Workbook.add_sheet(name)</code>添加了一个名为name的表，类型为Worksheet。</p>
-<p><code>Workbook.get_sheet(index)</code>可以根据索引返回Worksheet（前提是已经添加到Workbook中了）。</p>
-<p><code>Worksheet.write(r, c, vlaue)</code>是将vlaue填充到指定位置。</p>
-<p><code>Worksheet.row(n)</code>返回指定的行。</p>
-<p><code>Row.write(c, value)</code>在某一行的指定列写入value。</p>
-<p><code>Worksheet.col(n)</code>返回指定的列。</p>
-<p>通过对<code>Row.height</code>或<code>Column.width</code>赋值可以改变行或列默认的高度或宽度。（单位：0.05 pt，即1/20 pt）</p>
-<p><code>Workbook.save(filename)</code>保存文件。</p>
-<p>有这么几点需要注意一下：</p>
-<ul>
-<li><p><code>xlwt</code>模块最大能写65535行，256列，如果超过这个范围，程序运行就会出现错误，那么可能需要找一些其他方法来解决。如果我们只注重数据的处理，那么可以采用<code>csv</code>模块来替代。</p>
-</li>
-<li><p>文件默认的编码方式是<code>ascii</code>，如果要改变编码方式，指定<code>Workbook()</code>的<code>encoding</code>参数，如<br><code>Workbook(encoding=&#39;utf-8&#39;)</code>。</p>
-</li>
-<li><p>表的单元格默认是不可重复写的，如果有需要，在调用<code>add_sheet()</code>的时候指定参数<code>cell_overwrite_ok=True</code>即可。</p>
-</li>
-</ul>
-<p>下面是一段示例代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> xlwt</div><div class="line"></div><div class="line">book = xlwt.Workbook(encoding=<span class="string">'utf-8'</span>)</div><div class="line">sheet = book.add_sheet(<span class="string">'sheet_test'</span>, cell_overwrite_ok=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">sheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'Python'</span>)</div><div class="line">sheet.row(<span class="number">0</span>).write(<span class="number">1</span>, <span class="string">'is'</span>)</div><div class="line">sheet.write(<span class="number">0</span>, <span class="number">2</span>, <span class="string">'very very useful.'</span>)</div><div class="line">sheet.col(<span class="number">2</span>).width = <span class="number">4000</span></div><div class="line"></div><div class="line">book.save(<span class="string">'test.xls'</span>)</div></pre></td></tr></table></figure></p>
-<p>除了基本的写入数据之外，<code>xlwt</code>还可以改变单元格格式。上面的<code>write</code>方法允许接受一个<code>XFStyle</code>（意为e<strong>X</strong>cel <strong>F</strong>ile <strong>Style</strong>）类型的参数，放在最后的位置。<code>easyxf()</code>可以快速生成一个XFStyle对象。</p>
-<p>这里简单介绍一下其用法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> datetime, xlwt</div><div class="line"></div><div class="line"><span class="comment"># ... some code</span></div><div class="line"></div><div class="line">font = xlwt.Font()</div><div class="line">font.name = <span class="string">'Arial'</span></div><div class="line">font.height = <span class="number">240</span> <span class="comment"># font size: 12pt</span></div><div class="line"></div><div class="line">pattern = xlwt.Pattern()</div><div class="line">pattern.pattern = xlwt.Pattern.SOLID_PATTERN</div><div class="line">pattern.pattern_fore_colour = <span class="number">0x0A</span></div><div class="line"></div><div class="line">style = xlwt.XFStyle()</div><div class="line">style.num_format_str = <span class="string">'0.00%'</span></div><div class="line">style.font = font</div><div class="line">style.pattern = pattern</div><div class="line"></div><div class="line">a = <span class="number">8</span></div><div class="line">b = <span class="number">10</span></div><div class="line"><span class="comment"># 以百分比的形式显示，保留两位小数</span></div><div class="line">sheet.write(<span class="number">0</span>,<span class="number">3</span>, float(a) / b, style)</div><div class="line"></div><div class="line"><span class="comment"># 显示日期</span></div><div class="line">sheet.row(<span class="number">0</span>).write(<span class="number">4</span>, datetime.date(<span class="number">2016</span>,<span class="number">8</span>,<span class="number">14</span>), xlwt.easyxf(</div><div class="line">        <span class="string">'font: name Arial, height 240;'</span></div><div class="line">        <span class="string">'pattern: pattern squares, fore_color red;'</span>,</div><div class="line">        num_format_str = <span class="string">'YYYY-MM-DD'</span></div><div class="line">    )</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<h3 id="使用xlutils修改Excel"><a href="#使用xlutils修改Excel" class="headerlink" title="使用xlutils修改Excel"></a>使用<code>xlutils</code>修改Excel</h3><p>通过<code>xlrd.open_workbook()</code>打开的Book对象是只读的，不能直接对其进行修改操作，而<code>xlwt.Workbook()</code>返回的Workbook对象虽然可写，但是写的时候只能从零写起，那如果要修改一个已经存在的Excel该怎么办呢？</p>
-<p>庆幸的是，在<code>xlutils.copy</code>中有个<code>copy()</code>方法，我们可以将一个<code>xlrd.Book</code>对象转化为一个<code>xlwt.Workbook</code>对象，这样我们就可以直接对已存在的Excel文件进行修改了。</p>
-<p>用法举例如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> xlrd</div><div class="line"><span class="keyword">import</span> xlutils.copy</div><div class="line"></div><div class="line">book = xlrd.open_workbook(<span class="string">'test.xls'</span>, formatting_info=<span class="keyword">True</span>)</div><div class="line">wtbook = xlutils.copy.copy(book)</div><div class="line">wtsheet = wtbook.get_sheet(<span class="number">0</span>)</div><div class="line">wtsheet.write(<span class="number">0</span>, <span class="number">0</span>, <span class="string">'Ok, changed!'</span>)</div><div class="line">wtbook.save(<span class="string">'test.xls'</span>)</div></pre></td></tr></table></figure></p>
-<p>要注意的是：</p>
-<ul>
-<li><p>调用<code>xlrd.open_workbook()</code>时，如果不指定<code>formatting_info=True</code>，那么修改后整个文档的样式会丢失。对一个单元格进行<code>write</code>操作时，如果不指定样式，也会将原来的样式丢失。</p>
-</li>
-<li><p>注意调用<code>copy()</code>的方法。也可以通过声明<code>from xlutils.copy import copy</code>来直接调用<code>copy()</code>。</p>
-</li>
-</ul>
-<h3 id="使用csv读写csv文件"><a href="#使用csv读写csv文件" class="headerlink" title="使用csv读写csv文件"></a>使用<code>csv</code>读写csv文件</h3><p>与读写Excel文件相比，csv文件的读写是相当方便的。<br>直接看下面的例子吧。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> csv</div><div class="line"></div><div class="line">file1 = open(<span class="string">'test1.csv'</span>, <span class="string">'rb'</span>)</div><div class="line">reader = csv.reader(file1)</div><div class="line"></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> reader:</div><div class="line">    <span class="keyword">for</span> col <span class="keyword">in</span> line:</div><div class="line">        <span class="keyword">print</span> col,</div><div class="line">    <span class="keyword">print</span></div><div class="line"></div><div class="line">file1.close()</div><div class="line"></div><div class="line">file2 = file(<span class="string">'test2.csv'</span>, <span class="string">'wb'</span>)</div><div class="line">writer = csv.writer(file2)</div><div class="line"></div><div class="line">writer.writerow([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</div><div class="line">writer.writerows([</div><div class="line">    [<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>],</div><div class="line">    [<span class="number">9</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">12</span>],</div><div class="line">    [<span class="number">13</span>,<span class="number">14</span>,<span class="number">15</span>,<span class="number">16</span>,<span class="number">17</span>]</div><div class="line">])</div><div class="line">file2.close()</div></pre></td></tr></table></figure></p>
-<p>这个程序涉及到了下面的方法：</p>
-<ul>
-<li><code>csv.reader()</code>返回一个DictReader对象。</li>
-<li><code>csv.writer()</code>返回一个DictWriter对象。</li>
-<li><code>DictWriter.writerow()</code>写一行。</li>
-<li><code>DictWriter.writerows()</code>写多行。</li>
-</ul>
-<p>需要注意的问题是：当我们需要写csv的时候，打开文件一定要带上’b’，否则可能会往文件里输出空行。Python 3.x情况会有些不同。</p>
-<h3 id="More…"><a href="#More…" class="headerlink" title="More…"></a>More…</h3><p>[1] <a href="https://github.com/python-excel/xlrd/" target="_blank" rel="external">https://github.com/python-excel/xlrd/</a><br>[2] <a href="https://github.com/python-excel/xlwt/" target="_blank" rel="external">https://github.com/python-excel/xlwt/</a><br>[3] <a href="https://github.com/python-excel/tutorial/" target="_blank" rel="external">https://github.com/python-excel/tutorial/</a></p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/14/python-excel/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -678,53 +572,15 @@
 
       
         
-          
-            <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>前段时间在搞一个网页页面，由于一些不可描述的原因，这部分无法完全套用现有框架，大部分代码只能用原生的php来开发。开发过程中遇到了一个比较蛋疼的问题。所幸终于解决，现在为了描述清楚，将问题简化抽象，将解决思路整理下来，让以后长点记性。</p>
+          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>前段时间在搞一个网页页面，由于一些不可描述的原因，这部分无法完全套用现有框架，大部分代码只能用原生的php来开发。开发过程中遇到了一个比较蛋疼的问题。所幸终于解决，现在为了描述清楚，将问题简化抽象，将解决思路整理下来，让以后长点记性。</p>
 <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>问题是这样的：</p>
 <p>页面有一个form表单。主要用来执行一些查询功能。查询的结果是一个集合，要通过表格显示出来。当这个集合很大的时候，就要分页显示。</p>
 <p>代码大致如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"xxx"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"type"</span> <span class="attr">placeholder</span>=<span class="string">"请输入要查找的类型"</span>/&gt;</span></div><div class="line">    ...</div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"查找"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx?page=1"</span>&gt;</span>1 <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx?page=2"</span>&gt;</span>2 <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span>...<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span>...<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>问题来了。表单点提交之后显示的查询结果是正确的，但是：当点了页码之后，显示出来的结果类型不正确了，和查找时输入的类型无关了。同时表单中的值也全部重置了。</p>
-<p>（可能有经验的同学已经知道是什么原因了，但是作为一个没有经验的新手，我还是一脸懵逼的状态）</p>
-<h3 id="问题定位"><a href="#问题定位" class="headerlink" title="问题定位"></a>问题定位</h3><p>这个问题怎么解决？</p>
-<p>先规定好bug场景吧: 点击“查找”内容正确，但是点击页码3的时候，表格内容不正确了。</p>
-<p>1. 服务端代码定位：</p>
-<p>先打印一下服务端的获取的参数吧，结果是page=3，但是表单里的值全都不见了！这样的话就相当于服务端查询的时候，type的值为空，因为后台逻辑里面写的如果值为空的话，sql语句就不会添加这个查询条件。所以服务器返回给前端的数据就没有按type查找了。表单里的其他值也是一样的道理。</p>
-<p>那么这样一来，服务端的代码逻辑错误就暂时排除了。那么问题在哪呢？为什么表单里的值获取不到呢？而第一次是正确的又是为什么呢？</p>
-<p>2. 网页代码的定位</p>
-<p>这个时候就需要思考的问题是表单中的值到底有没有被传到服务端去。因为表单里的值是post方式提交的，所以我打开了浏览器的F12工具，然后去查Network。</p>
-<p>然后问题就出现了：第一次填写了表单之后，数据被POST到服务端，这是没有问题的；而第二次点击页码的时候，方法变成了GET，从而表单中的数据就无法提交上去了。</p>
-<p>问题找到了，就是当点击页码的时候，form表单中的数据没有被提交到服务端去，造成这样的原因是什么呢？因为所点击的页码是一个a标签，它的链接在href中，当点击这个页码的时候，客户端就会以GET的方式往服务端发送请求。</p>
-<h3 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h3><p>到这里问题已经基本明确了，那么怎么解决这个问题呢？</p>
-<p>再次描述一下背景。因为表单中填写的数据比较敏感，所以必须使用POST方式完成提交。</p>
-<p>因为自己也不是搞web开发的，因此对于此类问题，如果原因搞明，那解决方案基本靠搜索引擎了（公司的网络可以访问Google，真心不错）。在网上搜了搜，可能是自己不会搜吧，大多数都是讲如何使用MySQL+php完成分页的，改了改关键字，终于找到一些可以沾边的网页。</p>
-<p>仔细看了看，主要解决办法有：</p>
-<p>1. ajax异步提交，发送POST请求</p>
-<p>2. 表单中添加一个隐藏的页码控件，然后在a里面添加js函数来完成提交。</p>
-<p>接下来一个一个试：</p>
-<p>然后就遇到问题了，我并不熟悉ajax，原理也没有搞懂，试了好多下，有“成功”的，确实从服务端接收到数据了，但是覆盖在了原来的网页上面，而且数据依然有问题（可能是表单数据发送到后台的方式不正确）。</p>
-<p>另外一个，在表单中添加隐藏的页码控件，有兴趣可以看看<a href="http://blog.csdn.net/arzhuo/article/details/6969516" target="_blank" rel="external">这个链接</a>，然而此时已经花了好长时间解决这个问题了，搞到这个时候其实已经很烦了，而且这个解决办法要改动的东西太多，并不是很满意。</p>
-<p><strong>下班！</strong></p>
-<p>次日早上这个问题才终于解决。</p>
-<p>其实仔细想一下，这个问题可以这样解决（假如没有上网搜解决方案这个过程）：</p>
-<p>1. 既然点击a使用的方法是GET，而点击“查找”按钮使用的方法是POST，那么可不可以让点击a标签实际上就是提交表单的动作呢？再把a里面的href带上。</p>
-<p>那么可以使用jQuery这样子写：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    $(<span class="string">"li a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</div><div class="line">        url = $(<span class="keyword">this</span>).attr(<span class="string">"href"</span>);     <span class="comment">// 获取这个a标签的href中的url</span></div><div class="line">        event.preventDefault();         <span class="comment">// 取消点击事件的默认动作</span></div><div class="line">        $(<span class="string">"form"</span>).attr(<span class="string">"action"</span>, url);  <span class="comment">// 修改form中的action动作</span></div><div class="line">        $(<span class="string">"form"</span>).submit();             <span class="comment">// 提交表单</span></div><div class="line">    &#125;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>就使用这么几行代码，直接改掉a标签的默认动作，然后问题也解决了。这个解决方案其实也是受到搜索出来的结果启发得到的，但是由于问题的具体场景不同，所以解决方案的复杂度也不一样。</p>
-<p>2. 另一种方案：从服务端着手</p>
-<p>既然第一次提交的数据第二次就“丢失”了，那么我可以在服务端将提交的数据保存到session中，以供后续查询使用。</p>
-<p>这个实现起来逻辑将会比较混乱，所以跳转页面这部分算是实现了，但是又带来一些额外的问题。所以没有了继续搞下去的动力。</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>解决这个小小的bug的过程真的是相当煎熬，明明可以解决，但有好几次就是跳过了正确的解决方案。在这个过程中暴露了一个问题：解决问题不带脑子。</p>
-<p>因此总结一下解决问题的方法：</p>
-<p>首先要正确定位bug，然后思考bug的原因，寻找解决方案。</p>
-<p>首先定位bug：</p>
-<p>1. 对于不可重现的bug，一定要在编码期间充分准备，随时用日志记录下状态。</p>
-<p>2. 对于可重现的bug（比如这个例子），需要采取自上而下或自下而上的方法，或者“夹逼法”。从问题的一端起，逐步去验证，直到明白是从哪个地方起出了问题，或者在哪个阶段出了问题，然后再更进一步去找。</p>
-<p>找到问题之后，就思考原因。有一点很重要，不写、不抄、不用看不懂的代码（这个和代码复用绝对不是一回事）。每一步都想清楚，哪一步与预期不一样那一步就出了问题。</p>
-<p>寻找解决方案这个就说来就话长，可以修改代码使其与预期一致（推荐），比如这里js模拟提交的解决方案。还可以后期做修补，先把这部分所带来的影响绕过去，比如这里的session这个解决方案。等等，具体情况具体对待，但是道理和套路一定要清楚。</p>
-<p>以上です。</p>
-
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/08/bug-thoughts/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -815,21 +671,17 @@
 
       
         
-          
-            <p>这几天使用Hexo和Github为自己搭建了一个技术博客，在此记录下职业生涯中关于技术的一些点滴。以前在一些博客网站上写东西都没坚持下来，希望这次可以养成并保持这个良好的习惯。</p>
+          <p>这几天使用Hexo和Github为自己搭建了一个技术博客，在此记录下职业生涯中关于技术的一些点滴。以前在一些博客网站上写东西都没坚持下来，希望这次可以养成并保持这个良好的习惯。</p>
 <p>下面是一些测试：</p>
 <h1 id="这个是大标题"><a href="#这个是大标题" class="headerlink" title="这个是大标题"></a>这个是大标题</h1><h3 id="这个是小标题"><a href="#这个是小标题" class="headerlink" title="这个是小标题"></a>这个是小标题</h3><blockquote>
 <p>这个是引用。</p>
 </blockquote>
-<p>这是一个普通段落，下边是一些代码片段。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.util.Scanner;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Hello world."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#! /usr/bin/env python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> math</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">100</span>):</div><div class="line">    <span class="keyword">print</span> <span class="string">"The squared root of %d is %f"</span> % (i, math.sqrt(i))</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Test<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line">      body &#123;</div><div class="line">        backgroundclolor: #FFCC99;</div><div class="line">      &#125;;</div><div class="line">      .abc &#123;</div><div class="line">        font-weight: 20pt;</div><div class="line">      &#125;;</div><div class="line">    <span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"abc"</span>&gt;</span>Hello world.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"ok.php"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"number"</span>/&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"提交"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"xyz"</span> <span class="attr">vlaue</span>=<span class="string">"js test"</span>/&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span>&gt;</span><span class="undefined"></span></div><div class="line">      $(function()&#123;</div><div class="line">        $("#xyz").click(function()&#123;</div><div class="line">          $(this).hide();</div><div class="line">        &#125;);</div><div class="line">      &#125;);</div><div class="line">    <span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    &lt;?php echo "PHP TEST"; ?&gt;</div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#! /bin/bash</span></div><div class="line"></div><div class="line">ls <span class="_">-l</span> | grep <span class="string">"root"</span> | awk <span class="string">'&#123; print $1 &#125;'</span></div></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _HEADER_H_</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _HEADER_H_</span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">static</span> <span class="keyword">int</span> sint;</div><div class="line"><span class="built_in">string</span> m = <span class="string">"This is a string."</span>;</div><div class="line"></div><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div><div class="line"><span class="keyword">class</span> Print &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    Print(T x) &#123; <span class="built_in">cout</span> &lt;&lt; x; &#125; </div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></div><div class="line">&#123;</div><div class="line">    Print&lt;<span class="keyword">int</span>&gt; a(<span class="number">8</span>);</div><div class="line">    Print&lt;<span class="built_in">std</span>::<span class="built_in">string</span>&gt; b(<span class="string">"foo"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>测试结束。</p>
-
-          
+<p>这是一个普通段落，下边是一些代码片段。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/31/hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -907,7 +759,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

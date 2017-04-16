@@ -96,7 +96,7 @@
 问题描述问题是这样的：
 页面有一个form表单。主要用来执行一些查询功能。查询的结果是一个集合，要通过表格显示出来。当这个集合很大的时候，就要分页显示。
 代码大">
-<meta property="og:updated_time" content="2016-08-14T16:34:59.112Z">
+<meta property="og:updated_time" content="2017-04-16T05:28:21.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个小小的Bug引发的思考">
 <meta name="twitter:description" content="引言前段时间在搞一个网页页面，由于一些不可描述的原因，这部分无法完全套用现有框架，大部分代码只能用原生的php来开发。开发过程中遇到了一个比较蛋疼的问题。所幸终于解决，现在为了描述清楚，将问题简化抽象，将解决思路整理下来，让以后长点记性。
@@ -289,6 +289,7 @@
 <h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>问题是这样的：</p>
 <p>页面有一个form表单。主要用来执行一些查询功能。查询的结果是一个集合，要通过表格显示出来。当这个集合很大的时候，就要分页显示。</p>
 <p>代码大致如下：</p>
+<a id="more"></a>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"xxx"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"type"</span> <span class="attr">placeholder</span>=<span class="string">"请输入要查找的类型"</span>/&gt;</span></div><div class="line">    ...</div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"查找"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx?page=1"</span>&gt;</span>1 <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"xxx?page=2"</span>&gt;</span>2 <span class="tag">&lt;<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    ...</div><div class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">thead</span>&gt;</span>...<span class="tag">&lt;/<span class="name">thead</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">tbody</span>&gt;</span>...<span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
 <p>问题来了。表单点提交之后显示的查询结果是正确的，但是：当点了页码之后，显示出来的结果类型不正确了，和查找时输入的类型无关了。同时表单中的值也全部重置了。</p>
 <p>（可能有经验的同学已经知道是什么原因了，但是作为一个没有经验的新手，我还是一脸懵逼的状态）</p>
@@ -450,7 +451,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>

@@ -2,30 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://kiwi-yan.github.io/2017/02/05/rfc1945/</loc>
+    <loc>http://kiwi-yan.github.io/2017/04/15/http-intro/</loc>
     
-    <lastmod>2017-02-06T14:52:50.494Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kiwi-yan.github.io/2017/02/03/plans-in-2017/</loc>
-    
-    <lastmod>2017-02-03T13:35:29.077Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kiwi-yan.github.io/2016/08/08/bug-thoughts/</loc>
-    
-    <lastmod>2016-08-14T16:34:59.112Z</lastmod>
+    <lastmod>2017-04-16T08:47:53.676Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://kiwi-yan.github.io/2016/08/14/python-excel/</loc>
     
-    <lastmod>2016-08-14T16:34:59.112Z</lastmod>
+    <lastmod>2017-04-16T05:30:09.410Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kiwi-yan.github.io/2016/07/31/hello-world/</loc>
+    
+    <lastmod>2017-04-16T05:29:43.824Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kiwi-yan.github.io/2016/08/08/bug-thoughts/</loc>
+    
+    <lastmod>2017-04-16T05:28:21.156Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://kiwi-yan.github.io/2017/02/03/plans-in-2017/</loc>
+    
+    <lastmod>2017-04-16T05:27:56.009Z</lastmod>
     
   </url>
   
@@ -33,13 +40,6 @@
     <loc>http://kiwi-yan.github.io/tags/index.html</loc>
     
     <lastmod>2016-08-08T13:48:09.932Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://kiwi-yan.github.io/2016/07/31/hello-world/</loc>
-    
-    <lastmod>2016-07-31T11:37:43.821Z</lastmod>
     
   </url>
   
