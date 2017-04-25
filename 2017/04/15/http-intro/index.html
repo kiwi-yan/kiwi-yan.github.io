@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="web开发,网络编程," />
+  <meta name="keywords" content="web开发,HTTP协议,HTTP权威指南," />
 
 
 
@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
+<meta name="description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是讲究效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
 不说废话，进入正题。
 如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《HTTP权威指南》学习总结1——HTTP协议概述">
 <meta property="og:url" content="http://kiwi-yan.github.io/2017/04/15/http-intro/index.html">
 <meta property="og:site_name" content="死锁的人生">
-<meta property="og:description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
+<meta property="og:description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是讲究效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
 不说废话，进入正题。
 如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web">
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png">
@@ -99,13 +99,14 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/exclamation.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/article/image/http_https_protocal_stack.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/new_moon_with_face.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png">
-<meta property="og:updated_time" content="2017-04-16T09:27:15.509Z">
+<meta property="og:updated_time" content="2017-04-25T05:03:18.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《HTTP权威指南》学习总结1——HTTP协议概述">
-<meta name="twitter:description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
+<meta name="twitter:description" content="引言本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是讲究效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了。
 不说废话，进入正题。
 如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png">
@@ -139,6 +140,16 @@
   
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?1f1eb69916909a407e577f83cf7a8004";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -291,7 +302,7 @@
       
 
       
-        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是将就效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png"></span>。</p>
+        <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>本来是计划要翻译HTTP相关rfc文档的，奈何工程量巨大，进度实在太慢，只能放弃，以后有兴趣可以搞一下，因为里面确实有一些很有用的东西，当前学习任务还是讲究效率的。终于在一些因素的影响下，我决定在1个月内看完《HTTP权威指南》这本书。从3月13日开始到4月15日，进度还是拖下了，因为游戏太好玩了<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/grinning.png"></span>。</p>
 <p>不说废话，进入正题。</p>
 <p>如今我们已进入Web x.0的时代（求x = ?），HTTP协议是Web系统的最基本协议，但是很多开发者都很少系统了解过，殊不知了解HTTP协议可以解决很多开发过程中的疑难杂症。因为自己在两年前学习网络编程的时候想着做个什么东西出来，当时就选了一个HTTP服务器，从此与HTTP结下了不解之缘，工作以后到目前为止主要工作内容就是Web开发，于是又勾起了那段青涩的回忆，也开始想深入了解一下她，于是乎……（对不起我编不下去了），总之，我写下了这几篇博客来作为自己对最近一段时间学习的总结。</p>
 <a id="more"></a>
@@ -309,7 +320,7 @@
 <p>HTTP：<code>http://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;?&lt;query&gt;#&lt;frag&gt;</code><br>HTTPS：<code>https://&lt;host&gt;:&lt;port&gt;/&lt;path&gt;?&lt;query&gt;#&lt;frag&gt;</code><br>FTP：<code>ftp://&lt;user&gt;:&lt;password&gt;@&lt;host&gt;:&lt;port&gt;/&lt;path&gt;;&lt;params&gt;</code><br>FILE：<code>file://&lt;host&gt;/&lt;path&gt;</code></p>
 <p>关于URL格式的更详细信息可以参考rfc1738。</p>
 <p>注意，方案即代表着协议，URL并不局限于HTTP协议。下面我们详细讨论一下HTTP的URL。</p>
-<table> <thead> <tr><th style="width:150px" colspan="2"> 组件 </th><th style="width:250px"> 意义 </th><th style="width:100px"> 是否可选 </th></tr> </thead> <tbody> <tr><td> <code>&lt;scheme&gt;</code> </td><td> 方案 </td><td> 指明了解析URL的程序使用什么协议，方案名是大小写无关的 </td><td> 必须 </td></tr> <tr><td> <code>&lt;host&gt;</code> </td><td> 主机 </td><td> 标识了资源所在的宿主机器，也就是服务器 </td><td> 必须 </td></tr> <tr><td> <code>&lt;port&gt;</code> </td><td> 端口 </td><td> 说明了服务器正在监听的网络端口 </td><td> 有默认值 </td></tr> <tr><td> <code>&lt;path&gt;</code> </td><td> 路径 </td><td> 指明了资源所在的地方 </td><td> 可选 </td></tr> <tr><td> <code>&lt;query&gt;</code> </td><td> 查询字符串 </td><td> 额外传递给服务期的信息 </td><td> 可选 </td></tr> <tr><td> <code>&lt;frag&gt;</code> </td><td> 片段 </td><td> 表示资源内部的一个片段，仅由客户端使用，客户端不能将片段传送给服务器 </td><td> 可选 </td></tr> </tbody> </table>
+<table> <thead> <tr><th style="width:150px" colspan="2"> 组件 </th><th style="width:250px"> 意义 </th><th style="width:100px"> 是否可选 </th></tr> </thead> <tbody> <tr><td> <code>&lt;scheme&gt;</code> </td><td> 方案 </td><td> 指明了解析URL的程序使用什么协议，方案名是大小写无关的 </td><td> 必须 </td></tr> <tr><td> <code>&lt;host&gt;</code> </td><td> 主机 </td><td> 标识了资源所在的宿主机器，也就是服务器 </td><td> 必须 </td></tr> <tr><td> <code>&lt;port&gt;</code> </td><td> 端口 </td><td> 说明了服务器正在监听的网络端口 </td><td> 有默认值 </td></tr> <tr><td> <code>&lt;path&gt;</code> </td><td> 路径 </td><td> 指明了资源所在的地方 </td><td> 可选 </td></tr> <tr><td> <code>&lt;query&gt;</code> </td><td> 查询字符串 </td><td> 额外传递给服务器的信息 </td><td> 可选 </td></tr> <tr><td> <code>&lt;frag&gt;</code> </td><td> 片段 </td><td> 表示资源内部的一个片段，仅由客户端使用，客户端不能将片段传送给服务器 </td><td> 可选 </td></tr> </tbody> </table>
 
 <p>HTTP的URL与HTTPS的URL很像，不过HTTP的端口默认值为80，HTTPS的端口默认值为443。</p>
 <p>URL分为相对URL和绝对URL。上面讨论的都是绝对URL，单独的相对URL没有任何意义。相对URL可以通过基础URL来推导成绝对URL。基础URL可能由包含相对URL的资源显式指定（HTML里的<base>标签可以指定基础URL），如果没有显式指定，则可以由包含相对URL的资源确定。相对URL推导成绝对URL的算法在rfc1808中指定，后来又合并到rfc2396中。</p>
@@ -399,7 +410,7 @@
 <p>到现在为止我们已经知道HTTP报文的基本组成，但是HTTP协议在网络中是如何工作的呢？</p>
 <h3 id="HTTP事务"><a href="#HTTP事务" class="headerlink" title="HTTP事务"></a>HTTP事务</h3><p>HTTP协议是应用层的通信协议，它依赖传输层的TCP协议来完成报文的发送与接收。TCP协议是面向字节流的可靠的传输层协议，它可以保证数据无误的从发送端到达接收端，因此我们在使用HTTP协议的时候，无需考虑报文是否被正确传输，这些事情TCP都帮我们做了。</p>
 <p>HTTPS协议是基于SSL/TLS的HTTP协议。抽象的看，HTTPS主要是在TCP和HTTP之间加了一层“安全层”（确切来说应该是OSI中的表示层和会话层）利用SSL/TLS来对数据进行加密解密。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">                                    +-------------------+</div><div class="line">                                    |        HTTP       |</div><div class="line">+-------------------+               |-------------------|</div><div class="line">|        HTTP       |               |     SSL or TLS    |</div><div class="line">|-------------------|               |-------------------|</div><div class="line">|        TCP        |               |        TCP        |</div><div class="line">|-------------------|               |-------------------|</div><div class="line">|         IP        |               |         IP        |</div><div class="line">|-------------------|               |-------------------|</div><div class="line">| Network Interface |               | Network Interface |</div><div class="line">+-------------------+               +-------------------+</div><div class="line">    HTTP协议栈                           HTTPS协议栈</div></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/article/image/http_https_protocal_stack.png"></p>
 <p>HTTP在传输数据前，先建立TCP连接，连接建立好后就在客户端和服务器间形成了一条虚拟电路，HTTP报文可以沿着这条虚拟电路到达指定位置，报文发送完毕可以根据具体情况决定是否需要关闭连接。</p>
 <p>关于TCP的信息这里不做过多阐述，我们重点关注HTTP的工作过程。</p>
 <p>我们将一条客户端发送到服务器的请求报文与服务器返回给客户端的响应报文合起来称为一个HTTP事务。<br>最初一个TCP连接仅处理一个HTTP事务。后来为了优化性能提出了持久连接的概念。尽管如此，我们仍需知道HTTP协议是无状态的，也就是说在多个HTTP事务中，每个事务都是独立的，无论TCP连接是持久的还是完成一个事务就断开，HTTP都不会记录此事务的连接状态（对比FTP，FTP在进行用户认证后会一直保持和这个用户的会话，直至关闭连接，但HTTP不会）。</p>
@@ -453,7 +464,9 @@
           
             <a href="/tags/web开发/" rel="tag">#web开发</a>
           
-            <a href="/tags/网络编程/" rel="tag">#网络编程</a>
+            <a href="/tags/HTTP协议/" rel="tag">#HTTP协议</a>
+          
+            <a href="/tags/HTTP权威指南/" rel="tag">#HTTP权威指南</a>
           
         </div>
       
@@ -546,7 +559,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
