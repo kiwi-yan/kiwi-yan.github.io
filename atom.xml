@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kiwi-yan.github.io/"/>
-  <updated>2017-04-25T05:03:18.175Z</updated>
+  <updated>2017-06-03T15:31:20.180Z</updated>
   <id>http://kiwi-yan.github.io/</id>
   
   <author>
@@ -14,6 +14,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>我的书单（长期更新）</title>
+    <link href="http://kiwi-yan.github.io/2017/06/03/book-list/"/>
+    <id>http://kiwi-yan.github.io/2017/06/03/book-list/</id>
+    <published>2017-06-03T12:05:34.000Z</published>
+    <updated>2017-06-03T15:31:20.180Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>不读书，和咸鱼有什么分别？<br>小时候的我，可是很喜欢读书的，天文地理、人文历史都有涉及过，奈何后来学业繁重，以致于偶尔厌学情绪高涨，看书的日子便少了。由于人生经历也太过于简单，每每与人谈话，便觉才疏学浅。而现在工作之余也有些许精力了，加上工作中也觉得自己能力有限，总不能一直吃老本吧，所以越来越觉得自己应该学习。正好前段时间添置了一台Kindle PW3，也买了很多书，感觉已经是万事俱备，只欠东风，就差自己看书了。</p>
+<p>那为什么要晒书单呢？您自个儿猜吧。<span class="emoji"><img src="https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png"></span></p>
+<h3 id="老本行不能忘：吃饭的家伙"><a href="#老本行不能忘：吃饭的家伙" class="headerlink" title="老本行不能忘：吃饭的家伙"></a>老本行不能忘：吃饭的家伙</h3><p>这部分大多数是计算机相关的。</p>
+<ul class="task-list"><br><input class="task-list-item" type="checkbox" disabled checked> HTTP权威指南 (4)<br><input class="task-list-item" type="checkbox" disabled> 白帽子讲Web安全<br><input class="task-list-item" type="checkbox" disabled> 数学之美<br><input class="task-list-item" type="checkbox" disabled> 神经网络与深度学习<br><a id="more"></a><br><input class="task-list-item" type="checkbox" disabled> 深入理解计算机系统<br><input class="task-list-item" type="checkbox" disabled> 深入理解Nginx：模块开发与架构解析<br><input class="task-list-item" type="checkbox" disabled> Wireshark数据包分析实战<br><input class="task-list-item" type="checkbox" disabled> C++并发编程实战<br><input class="task-list-item" type="checkbox" disabled> 设计模式——可复用面向对象软件的基础<br><input class="task-list-item" type="checkbox" disabled> 深入应用C++11——代码优化与工程级应用<br><input class="task-list-item" type="checkbox" disabled> 计算机科学的基础<br><input class="task-list-item" type="checkbox" disabled> 软技能：代码之外的生存指南<br><input class="task-list-item" type="checkbox" disabled> 程序员的自我修养——链接、装载与库<br><input class="task-list-item" type="checkbox" disabled> 分布式系统：概念与设计<br><input class="task-list-item" type="checkbox" disabled> 大规模分布式存储系统：原理解析与架构实战<br><input class="task-list-item" type="checkbox" disabled> Hadoop生态系统<br><input class="task-list-item" type="checkbox" disabled> Hadoop权威指南<br><input class="task-list-item" type="checkbox" disabled> Spark快速大数据分析<br><input class="task-list-item" type="checkbox" disabled> 深入理解Linux内核<br><input class="task-list-item" type="checkbox" disabled> Go入门指南<br><input class="task-list-item" type="checkbox" disabled> 像计算机科学家一样思考(C++版)<br><input class="task-list-item" type="checkbox" disabled> 社交应用编程<br><input class="task-list-item" type="checkbox" disabled> IT项目管理<br></ul>
+
+<!--
+> 上述书籍为出版物，下面的是一些著名论文、优秀项目的文档、未出版书籍（大多为翻译的中文版），还包含一些英文原版书籍电子版，可以锻炼一下英文阅读能力。这些内容不是非读不可，随便读读就OK~
+<ul class="task-list">
+<input class="task-list-item" type="checkbox" disabled> TCP/IP Illustrated, Volumn 1: The Protocols, 2ed
+<input class="task-list-item" type="checkbox" disabled> The Linux Programming interface, A Linux and UNIX&reg; System Programming Handbook
+<input class="task-list-item" type="checkbox" disabled> Linux System Programming, 2ed
+<input class="task-list-item" type="checkbox" disabled> [Nginx documentation] (http://nginx.org/en/docs/)
+<input class="task-list-item" type="checkbox" disabled> Glibc manual
+<input class="task-list-item" type="checkbox" disabled> Python documentation
+</ul>
+-->
+<h3 id="软技能：打造核心竞争力"><a href="#软技能：打造核心竞争力" class="headerlink" title="软技能：打造核心竞争力"></a>软技能：打造核心竞争力</h3><p>这部分大多数是介绍方法经验的实用书。</p>
+<ul class="task-list"><br><input class="task-list-item" type="checkbox" disabled> 时间管理：如何充分利用你的24小时(漫画版)<br><input class="task-list-item" type="checkbox" disabled> 自控术<br><input class="task-list-item" type="checkbox" disabled> 金字塔原理：思考、表达和解决问题的逻辑<br><input class="task-list-item" type="checkbox" disabled> 精进：如何成为一个很厉害的人<br><input class="task-list-item" type="checkbox" disabled> 如何阅读一本书<br><input class="task-list-item" type="checkbox" disabled> 你的团队需要一个会讲故事的人：用故事思维解决问题<br></ul>
+
+<h3 id="洞悉人生：闲来无聊打发时间"><a href="#洞悉人生：闲来无聊打发时间" class="headerlink" title="洞悉人生：闲来无聊打发时间"></a>洞悉人生：闲来无聊打发时间</h3><p>这部分是一些杂七杂八的书，涉猎较广。</p>
+<ul class="task-list"><br><input class="task-list-item" type="checkbox" disabled checked> 阿Q正传<br><input class="task-list-item" type="checkbox" disabled> 浪潮之巅<br><input class="task-list-item" type="checkbox" disabled> 文明之光<br><input class="task-list-item" type="checkbox" disabled> 这个历史挺靠谱：袁腾飞讲历史<br><input class="task-list-item" type="checkbox" disabled> 明朝那些事儿<br><input class="task-list-item" type="checkbox" disabled> 战争就是这么回事儿：袁腾飞讲战争史<br><input class="task-list-item" type="checkbox" disabled> 世界历史很有趣：袁腾飞讲日本史<br><input class="task-list-item" type="checkbox" disabled> 鱼羊野史<br><input class="task-list-item" type="checkbox" disabled> 你一定爱读的极简欧洲史<br><input class="task-list-item" type="checkbox" disabled> 全球通史<br><input class="task-list-item" type="checkbox" disabled> 世界名人传记速读大全集<br><input class="task-list-item" type="checkbox" disabled> 史蒂夫·乔布斯传<br><input class="task-list-item" type="checkbox" disabled> 乌合之众：大众心理研究<br><input class="task-list-item" type="checkbox" disabled> 拖延心理学<br><input class="task-list-item" type="checkbox" disabled> 罗辑思维<br><input class="task-list-item" type="checkbox" disabled> 新版中日交流标准日本语（初级）<br><input class="task-list-item" type="checkbox" disabled> 从日本中小学课本学日文<br><input class="task-list-item" type="checkbox" disabled> 神们自己<br><input class="task-list-item" type="checkbox" disabled> 永恒的终结<br></ul>
+
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>此书单记录了从2017年3月1日起，我看过的、正在看的和想要看的书。括号后面是看完这本书后<b>我自己</b>对这本书的“打分”（1-5，1：垃圾，2：一般，3：实用，4：推荐，5：可收藏），部分书籍不予置评。书单会不定期变化，不过我会一直将此篇文章作为博客置顶。</p>
+<p>以上。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h3&gt;&lt;p&gt;不读书，和咸鱼有什么分别？&lt;br&gt;小时候的我，可是很喜欢读书的，天文地理、人文历史都有涉及过，奈何后来学业繁重，以致于偶尔厌学情绪高涨，看书的日子便少了。由于人生经历也太过于简单，每每与人谈话，便觉才疏学浅。而现在工作之余也有些许精力了，加上工作中也觉得自己能力有限，总不能一直吃老本吧，所以越来越觉得自己应该学习。正好前段时间添置了一台Kindle PW3，也买了很多书，感觉已经是万事俱备，只欠东风，就差自己看书了。&lt;/p&gt;
+&lt;p&gt;那为什么要晒书单呢？您自个儿猜吧。&lt;span class=&quot;emoji&quot;&gt;&lt;img src=&quot;https://raw.githubusercontent.com/kiwi-yan/blog-file-library/master/_static/image/emoji/full_moon_with_face.png&quot;/&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;h3 id=&quot;老本行不能忘：吃饭的家伙&quot;&gt;&lt;a href=&quot;#老本行不能忘：吃饭的家伙&quot; class=&quot;headerlink&quot; title=&quot;老本行不能忘：吃饭的家伙&quot;&gt;&lt;/a&gt;老本行不能忘：吃饭的家伙&lt;/h3&gt;&lt;p&gt;这部分大多数是计算机相关的。&lt;/p&gt;
+&lt;ul class=&quot;task-list&quot;&gt;&lt;br&gt;&lt;input class=&quot;task-list-item&quot; type=&quot;checkbox&quot; disabled checked&gt; HTTP权威指南 (4)&lt;br&gt;&lt;input class=&quot;task-list-item&quot; type=&quot;checkbox&quot; disabled&gt; 白帽子讲Web安全&lt;br&gt;&lt;input class=&quot;task-list-item&quot; type=&quot;checkbox&quot; disabled&gt; 数学之美&lt;br&gt;&lt;input class=&quot;task-list-item&quot; type=&quot;checkbox&quot; disabled&gt; 神经网络与深度学习&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="读书" scheme="http://kiwi-yan.github.io/tags/%E8%AF%BB%E4%B9%A6/"/>
+    
+      <category term="学习" scheme="http://kiwi-yan.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>《HTTP权威指南》学习总结1——HTTP协议概述</title>

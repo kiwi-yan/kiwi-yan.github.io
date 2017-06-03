@@ -1548,7 +1548,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffffe8;
+  background: #ff0a18;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2188,4 +2188,14 @@ span.emoji {
 span.emoji img {
   height: 24px;
   border: none !important;
+}
+ul.task-list a + br {
+  display: none;
+}
+ul.task-list {
+  margin-top: -30px;
+}
+ul.task-list input[type=checkbox].task-list-item {
+  margin: 0 0.4em 0.25em -1.6em;
+  vertical-align: middle;
 }
